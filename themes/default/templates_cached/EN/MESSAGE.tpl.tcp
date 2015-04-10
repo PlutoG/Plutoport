@@ -1,0 +1,4 @@
+<?php
+return unserialize("a:6:{i:0;a:1:{i:0;a:5:{i:0;s:15:\"tcpfunc_MESSAGE\";i:1;a:0:{}i:2;i:1;i:3;s:0:\"\";i:4;s:0:\"\";}}i:1;a:0:{}i:2;s:7:\"MESSAGE\";i:3;N;i:4;N;i:5;s:536:\"\$TPL_FUNCS['tcpfunc_MESSAGE']=\"eval(\\\$RESET_VAR_CODE); echo \\\"<div class=\\\\\\\"box box___message\\\\\\\"><div class=\\\\\\\"box_inner\\\\\\\">\\\\n	<div class=\\\\\\\"global_message\\\\\\\" role=\\\\\\\"alert\\\\\\\">\\\\n		<img src=\\\\\\\"\\\",\\n	ecv(\\\$cl,array(1),0,\\\"IMG\\\",array(\\\"messageicons/\\\".output_tempcode_parameter( isset (\\\$bound_TYPE)?\\\$bound_TYPE:NULL,\\\"TYPE\\\",\\\"MESSAGE\\\"))),\\n	\\\"\\\\\\\" alt=\\\\\\\"\\\\\\\" />\\\\n		<span>\\\",\\n	output_tempcode_parameter( isset (\\\$bound_MESSAGE)?\\\$bound_MESSAGE:NULL,\\\"MESSAGE\\\",\\\"MESSAGE\\\"),\\n	\\\"</span>\\\\n	</div>\\\\n</div></div>\\\\n\\\";\";\n\";}");
+
+?>

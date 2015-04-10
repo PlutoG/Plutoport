@@ -1,0 +1,4 @@
+# Breaks editing tools like Aviary
+#order deny,allow
+#deny from all
+

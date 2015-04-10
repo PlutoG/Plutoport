@@ -1,0 +1,4 @@
+<?php
+return unserialize("a:6:{i:0;a:1:{i:0;a:5:{i:0;s:32:\"tcpfunc_POINTS_TRANSACTIONS_WRAP\";i:1;a:0:{}i:2;i:1;i:3;s:0:\"\";i:4;s:0:\"\";}}i:1;a:0:{}i:2;s:24:\"POINTS_TRANSACTIONS_WRAP\";i:3;N;i:4;N;i:5;s:194:\"\$TPL_FUNCS['tcpfunc_POINTS_TRANSACTIONS_WRAP']=\"eval(\\\$RESET_VAR_CODE); echo output_tempcode_parameter( isset (\\\$bound_CONTENT)?\\\$bound_CONTENT:NULL,\\\"CONTENT\\\",\\\"POINTS_TRANSACTIONS_WRAP\\\");\";\n\";}");
+
+?>

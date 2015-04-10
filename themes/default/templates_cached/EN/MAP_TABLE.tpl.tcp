@@ -1,0 +1,4 @@
+<?php
+return unserialize("a:6:{i:0;a:1:{i:0;a:5:{i:0;s:17:\"tcpfunc_MAP_TABLE\";i:1;a:0:{}i:2;i:1;i:3;s:0:\"\";i:4;s:0:\"\";}}i:1;a:0:{}i:2;s:9:\"MAP_TABLE\";i:3;N;i:4;N;i:5;s:443:\"\$TPL_FUNCS['tcpfunc_MAP_TABLE']=\"eval(\\\$RESET_VAR_CODE); echo \\\"<div class=\\\\\\\"wide_table_wrap\\\\\\\"><table summary=\\\\\\\"\\\",\\n	\\\"Table with headers in left column and values or settings in right column\\\",\\n	\\\"\\\\\\\" class=\\\\\\\"wide_table results_table spaced_table autosized_table\\\\\\\">\\\\n	<tbody>\\\\n		\\\",\\n	output_tempcode_parameter( isset (\\\$bound_FIELDS)?\\\$bound_FIELDS:NULL,\\\"FIELDS\\\",\\\"MAP_TABLE\\\"),\\n	\\\"\\\\n	</tbody>\\\\n</table></div>\\\\n\\\\n\\\";\";\n\";}");
+
+?>

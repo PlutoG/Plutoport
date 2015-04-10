@@ -1,0 +1,4 @@
+<?php
+return unserialize("a:6:{i:0;a:1:{i:0;a:5:{i:0;s:26:\"tcpfunc_BLOCK_MAIN_SITEMAP\";i:1;a:0:{}i:2;i:1;i:3;s:0:\"\";i:4;s:0:\"\";}}i:1;a:0:{}i:2;s:18:\"BLOCK_MAIN_SITEMAP\";i:3;N;i:4;N;i:5;s:607:\"\$TPL_FUNCS['tcpfunc_BLOCK_MAIN_SITEMAP']=\"eval(\\\$RESET_VAR_CODE); echo \\\"<nav role=\\\\\\\"navigation\\\\\\\">\\\\n	<ul class=\\\\\\\"sitemap\\\\\\\" itemprop=\\\\\\\"significantLinks\\\\\\\">\\\\n		\\\",\\n	closure_loop(array(\\\"CHILDREN\\\".\\\"\\\",'vars'=>\\\$parameters),array(\\\$parameters,\\\$cl,\\\$last_attach),\\ncreate_function('\\\$parameters,\\\$cl,\\\$last_attach',\\\"extract(\\\\\\\$parameters,EXTR_PREFIX_ALL,'bound'); return \\\\\\\"\\\\\\\\n			<li>\\\\\\\\n				\\\\\\\".output_tempcode_parameter( isset (\\\\\\\$bound__loop_var)?\\\\\\\$bound__loop_var:NULL,\\\\\\\"_loop_var\\\\\\\",\\\\\\\"BLOCK_MAIN_SITEMAP\\\\\\\").\\\\\\\"\\\\\\\\n			</li>\\\\\\\\n		\\\\\\\";\\\")),\\n	\\\"\\\\n	</ul>\\\\n</nav>\\\\n\\\";\";\n\";}");
+
+?>

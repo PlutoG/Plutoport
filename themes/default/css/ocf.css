@@ -1,0 +1,1276 @@
+/*
+ {$BRAND_NAME`}
+ Copyright (c) ocProducts, 2004-2012
+*/
+
+/* Range of bright varying colours */
+{$THEME_WIZARD_COLOR,#9c029a,gcol_1,100% #9C029A}
+{$THEME_WIZARD_COLOR,#fa0c00,gcol_2,100% #FA0C00}
+{$THEME_WIZARD_COLOR,#aa6a04,gcol_3,100% #AA6A04}
+{$THEME_WIZARD_COLOR,#5800fa,gcol_4,100% #5800FA}
+{$THEME_WIZARD_COLOR,#0099fa,gcol_5,100% #0099FA}
+{$THEME_WIZARD_COLOR,#859638,gcol_6,100% #859638}
+{$THEME_WIZARD_COLOR,#2bab03,gcol_7,100% #2BAB03}
+{$THEME_WIZARD_COLOR,#7d7e04,gcol_8,100% #7D7E04}
+{$THEME_WIZARD_COLOR,#966038,gcol_9,100% #966038}
+{$THEME_WIZARD_COLOR,#96384a,gcol_10,100% #96384A}
+{$THEME_WIZARD_COLOR,#963895,gcol_11,100% #963895}
+{$THEME_WIZARD_COLOR,#4e3896,gcol_12,100% #4E3896}
+{$THEME_WIZARD_COLOR,#386296,gcol_13,100% #386296}
+{$THEME_WIZARD_COLOR,#389596,gcol_14,100% #389596}
+{$THEME_WIZARD_COLOR,#389653,gcol_15,100% #389653}
+
+{$THEME_WIZARD_COLOR,#72f579,ocf_personal_post_background,50% 00FF00 + 50% area_2_background}
+{$THEME_WIZARD_COLOR,#000000,ocf_personal_post_text,100% BW}
+{$THEME_WIZARD_COLOR,#f27579,emphasis_background,50% FF0000 + 50% area_2_background}
+{$THEME_WIZARD_COLOR,#180c0c,emphasis_text,10% emphasis_background + 90% BW}
+
+/*
+=========================
+========OCF Styles=======
+=========================
+*/
+
+.ocf_forum_topic_wrapper_column_column1, .ocf_forum_grouping_column1 {
+	width: 43px;
+}
+
+.ocf_forum_topic_wrapper_column_column2, .ocf_forum_grouping_column2 {
+	width: 100%;
+}
+
+.ocf_forum_topic_wrapper_column_column3 {
+	width: 100px;
+}
+
+.ocf_forum_topic_wrapper_column_column4, .ocf_forum_grouping_column3 {
+	width: 5em;
+}
+
+.ocf_forum_topic_wrapper_column_column5, .ocf_forum_grouping_column4 {
+	width: 5em;
+}
+
+.ocf_forum_topic_wrapper_column_column6 {
+	width: 18.5em;
+}
+
+.ocf_forum_topic_wrapper_column_column6_shorter {
+	width: 9em;
+}
+
+.ocf_forum_topic_wrapper_column_column7 {
+	width: 3.3em;
+}
+
+.ocf_forum_grouping_column5 {
+	width: 17em;
+}
+
+.dropdown_actions {
+	width: 7.5em;
+}
+
+.ocf_column1 {
+	background-color: {$GET,area_3_background} !important; /*  !important so precedence over th.dh */
+	font-size: 0.85em;
+	vertical-align: middle;
+	padding: 0.5em;
+	display: table-cell;
+}
+
+.ocf_column2 {
+	background-color: {$GET,area_background};
+	font-size: 1.0em;
+	vertical-align: middle;
+	padding: 0.5em;
+	display: table-cell;
+}
+
+.ocf_column3 {
+	background-color: {$GET,area_4_background};
+	font-size: 0.85em;
+	vertical-align: middle;
+	display: table-cell;
+	word-wrap: break-word;
+}
+
+.ocf_column4, .ocf_column5 {
+	background-color: {$GET,area_2_background};
+	font-size: 0.85em;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.ocf_column6 {
+	padding: 0.5em;
+	background-color: {$GET,area_3_background};
+	font-size: 0.9em;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.ocf_forum_box_left {
+	{$BETA_CSS_PROPERTY,border-top-left-radius: 10px;}
+}
+.ocf_forum_box_right {
+	{$BETA_CSS_PROPERTY,border-top-right-radius: 10px;}
+}
+.ocf_left_post_buttons, .ocf_forum_box_bleft {
+	{$BETA_CSS_PROPERTY,border-bottom-left-radius: 10px;}
+}
+.post_buttons, .ocf_forum_box_bright {
+	{$BETA_CSS_PROPERTY,border-bottom-right-radius: 10px;}
+}
+
+.ocf_topic_list, .ocf_forum_grouping, .ocf_topic {
+	border: 0 !important;
+	border-collapse: collapse;
+}
+.ocf_topic_list th, .ocf_forum_grouping th, .ocf_topic_list td, .ocf_forum_grouping td, .ocf_topic>div>div>div {
+	border: 1px solid {$GET,main_background};
+}
+
+.ocf_table_footer {
+	display: table;
+	width: 100%;
+}
+.ocf_table_footer>div {
+	display: table-row-group;
+}
+.ocf_table_footer>div>div {
+	display: table-row;
+}
+
+.ocf_table_footer>div {
+	height: 0.3em;
+}
+
+.ocf_topic_marker_cell {
+	background-color: {$GET,area_background};
+	vertical-align: middle;
+	text-align: center;
+}
+
+.ocf_screen_buttons {
+	float: {!en_right};
+	white-space: nowrap;
+	margin: 1em 0 1em 1em !important;
+}
+
+.ocf_member_signature {
+	margin: 0.5em;
+	font-size: 0.85em;
+	color: {$GET,area_key_text};
+	{+START,IF,{$MOBILE}}
+		display: none;
+	{+END}
+}
+
+/*
+=========================
+=====Marking system======
+=========================
+*/
+
+.ocf_on, .ocf_on td {
+	background-color: {$GET,area_current_background} !important;
+}
+
+.ocf_off {
+}
+
+.ocf_topic_marker {
+	padding: 0.5em;
+	float: {!en_right};
+	border: 1px solid {$GET,standard_border};
+	margin-{!en_left}: 2em;
+}
+
+/*
+=========================
+=======Topic View========
+=========================
+*/
+
+/* Use correct div semantics for the posts, but table-style rendering */
+.ocf_topic {
+	display: table;
+}
+.ocf_topic>div {
+	display: table-row-group;
+}
+.ocf_topic>div>div {
+	display: table-row;
+}
+.ocf_topic>div>div>div {
+	display: table-cell;
+}
+.ocf_topic>div>div>div:first-child {
+	{+START,IF,{$NOT,{$MOBILE}}}
+		width: 130px;
+	{+END}
+	{+START,IF,{$MOBILE}}
+		width: 80px;
+	{+END}
+	background-color: {$GET,area_background};
+	padding: 0.3em;
+}
+
+.ocf_topic {
+	table-layout: fixed !important; /* Needed to be able to lock in overflow scrolling to individual cells */
+}
+
+.ocf_topic>div>div>div:first-child {
+	vertical-align: middle;
+}
+
+.ocf_topic .ocf_forum_box_left, .ocf_post_details {
+	background-color: {$GET,box_title_background} !important;
+	{$BETA_CSS_PROPERTY,background-image: linear-gradient(to bottom\, {$GET,lgrad}\, {$GET,dgrad});}
+	color: {$GET,box_title_text};
+}
+.ocf_topic .ocf_forum_box_left, .ocf_post_details, .ocf_post_details a, .ocf_post_details a:hover {
+	color: {$GET,box_title_text} !important;
+}
+
+.ocf_post_emphasis, .ocf_post_personal {
+	font-size: 0.85em;
+	font-weight: bold;
+	text-align: center;
+}
+
+.ocf_post_emphasis, div.ocf_post_emphasis.ocf_forum_box_left { /* Extra selector clause to give precedence over th.de_th and .ocf_forum_box_left */
+	background-color: {$GET,emphasis_background} !important;
+	color: {$GET,emphasis_text};
+}
+
+.ocf_post_personal, div.ocf_post_personal.ocf_forum_box_left { /* Extra selector clause to give precedence over th.de_th and .ocf_forum_box_left */
+	background-color: {$GET,ocf_personal_post_background} !important;
+	color: {$GET,ocf_personal_post_text};
+}
+
+.ocf_poll_button {
+	text-align: center;
+	background-color: {$GET,area_faded_background};
+	font-size: 0.9em;
+	vertical-align: middle;
+	padding: 0.5em;
+}
+
+.ocf_poll_meta {
+	text-align: center;
+}
+
+.ocf_topic_poll_form {
+	margin-bottom: 2em;
+}
+
+.ocf_topic_poll_form h3 {
+	text-align: center;
+}
+
+.ocf_topic_poll {
+	border-collapse: collapse;
+}
+
+.ocf_topic_poll, .ocf_topic_poll th {
+	text-align: right;
+}
+
+.ocf_topic_poll th, .ocf_topic_poll td {
+	border: 1px dotted {$GET,standard_border};
+}
+
+.ocf_topic_poll_radio, .ocf_topic_poll_result {
+	text-align: {!en_right};
+	width: 50%;
+	{$BETA_CSS_PROPERTY,box-sizing: border-box;}
+	padding: 0.5em;
+}
+
+.ocf_topic_poll_results {
+	font-weight: bold;
+	text-align: center;
+}
+
+.ocf_topic_poll_result_column2 {
+	font-size: 0.85em;
+}
+
+.ocf_topic_poll_result_column2 * {
+	vertical-align: middle;
+}
+
+.ocf_topic_poll_result_column2, .ocf_topic_poll_radio_column2 {
+	padding: 0.5em;
+}
+
+.ocf_topic_poster_title {
+	font-size: 0.8em;
+	margin-top: 0.5em;
+}
+
+.ocf_topic_poster_rank_images {
+	margin-top: 1.5em;
+}
+
+.ocf_guest_poster {
+	font-weight: bold;
+}
+
+.ocf_post_details {
+	text-align: {!en_left};
+	padding: 0.2em 0.3em 0.4em 0.2em;
+}
+
+.ocf_post_details_date {
+	float: {!en_left};
+	padding-{!en_left}: 0.5em;
+}
+
+.ocf_post_details_rating {
+	float: {!en_left};
+	padding-{!en_left}: 2em;
+	white-space: nowrap;
+}
+
+.ocf_post_details_unvalidated {
+	float: {!en_left};
+	padding-{!en_left}: 1em;
+}
+
+.ocf_post_details_grapple {
+	float: {!en_right};
+	padding-{!en_right}: 1em;
+}
+
+{+START,IF,{$NOT,{$MOBILE}}}
+	.ocf_topic_post_member_details {
+		padding: 0.5em;
+	}
+{+END}
+
+.ocf_topic_post_member_details {
+	text-align: center;
+	vertical-align: top !important;
+	{+START,IF,{$MOBILE}}
+		width: 80px;
+	{+END}
+}
+
+{+START,IF,{$MOBILE}}
+	.ocf_topic .ocf_topic_post_member_details img {
+		max-width: 100%;
+	}
+{+END}
+
+.ocf_topic_poster_name {
+	text-align: center;
+	display: inline-block;
+	{+START,IF,{$NOT,{$MOBILE}}}
+		{$BETA_CSS_PROPERTY,word-wrap: break-word;}
+	{+END}
+	margin: 1em 0;
+}
+
+.ocf_topic_post_avatar {
+	margin: 0 auto;
+	max-width: 100px;
+}
+
+.ocf_post_main_column {
+	background-color: {$GET,area_faded_background};
+	padding: 0.5em;
+	vertical-align: top;
+}
+
+.ocf_post_main_column.buttons_group {
+	margin: 0;
+}
+
+.ocf_topic_post_area {
+	padding: 0.5em;
+}
+
+.ocf_topic_post_area img {
+	max-width: 100%;
+}
+
+.ocf_topic_post_area>h2, .ocf_topic_post_area>h3 {
+	margin-top: 0;
+}
+
+hr.ocf_sig_barrier {
+	border-top: 1px solid {$GET,divider_line};
+	border-right: 0;
+	border-bottom: 0;
+	border-left: 0;
+	height: 0;
+	width: 40%;
+	background-color: {$GET,divider_line};
+	margin: 1em 1em 1em 0;
+	{+START,IF,{$MOBILE}}
+		display: none;
+	{+END}
+}
+
+.ocf_post_emphasis {
+	text-align: center;
+}
+
+.ocf_post_back_to_top {
+	padding: 0.5em;
+	text-align: {!en_right};
+}
+
+.ocf_topic_control_functions {
+	font-size: 0.85em;
+	margin: 0.5em 0 0 0;
+}
+
+.ocf_topic_control_functions label, .ocf_topic_control_functions span, .ocf_topic_control_functions input {
+	vertical-align: middle;
+}
+
+.ocf_topic_actions {
+	margin: 1em 0;
+	font-size: 0.85em;
+}
+
+.ocf_topic_control_functions label, .ocf_topic_actions label {
+	white-space: nowrap;
+}
+
+.ocf_quick_reply {
+	margin-top: 4em;
+}
+
+/*
+=========================
+=======Forum View========
+=========================
+*/
+
+.ocf_intro_question_answer_box {
+	text-align: center;
+}
+
+.ocf_pt_category_filters {
+	font-weight: bold;
+}
+
+.ocf_forum_grouping_toggleable_tray_button {
+	float: {!en_right};
+	border-bottom: 0;
+	margin-{!en_left}: 0.5em;
+}
+
+.ocf_topic_list, .ocf_forum_grouping {
+	table-layout: fixed;
+}
+
+.ocf_topic_list th, .ocf_forum_grouping th {
+	padding: 0.3em;
+}
+
+.ocf_forum_grouping_centered_header {
+	text-align: center;
+}
+
+.ocf_forum_description {
+	color: {$GET,area_key_text};
+	font-size: 0.85em;
+}
+
+.ocf_forum_subforums {
+	font-size: 0.85em;
+}
+
+.ocf_forum_grouping td {
+	padding: 0.5em;
+	text-align: {!en_left};
+}
+
+.ocf_forum_in_category_forum {
+	padding: 1em; /* This override is in place because unlike most .ocf_column2's, the forums in the forum view should have extensive padding. */
+}
+
+.ocf_forum_new_post_indicator {
+	vertical-align: middle;
+}
+
+.ocf_forum_num_topics {
+	text-align: center !important;
+}
+
+.ocf_forum_num_posts {
+	text-align: center !important;
+}
+
+.ocf_forum_latest {
+}
+
+.ocf_forum_topic_description {
+	font-size: 0.85em;
+	color: {$GET,area_key_text};
+}
+
+.ocf_forum_topic_row_poster {
+	text-align: center;
+}
+
+.ocf_forum_topic_row_num_posts {
+	text-align: center;
+}
+
+.ocf_forum_topic_row_num_views {
+	text-align: center;
+}
+
+.ocf_forum_topic_row_last_post {
+}
+
+.ocf_forum_topic_row_preview_button {
+	border: 1px solid {$GET,standard_border};
+	background-color: {$GET,area_background};
+	{$BETA_CSS_PROPERTY,background-image: linear-gradient(to bottom\, {$GET,area_background}\, {$GET,area_4_background});}
+	font-size: 0.85em;
+	padding: 0.5em !important;
+	float: {!en_right};
+	margin: 0 0 0.5em 0.5em;
+}
+
+.ocf_forum_topic_row_emoticon {
+	text-align: center;
+	width: 30px;
+}
+.ocf_forum_topic_row_emoticon img {
+	max-width: 100%;
+}
+
+.ocf_forum_topic_row_preview {
+	padding: 0.5em;
+}
+
+.ocf_unread_topic_title {
+	font-weight: bold;
+}
+
+/*
+=========================
+=========Header==========
+=========================
+*/
+
+.ocf_information_bar { /* {$,either OCF_GUEST_BAR.tpl or OCF_MEMBER_BAR.tpl} */
+	font-size: 0.9em;
+	margin-bottom: 1em !important;
+}
+
+.ocf_information_bar_outer>.toggleable_tray {
+	margin: 0; /* Undoes what .box_inner sets, so that our dividers are flush with the box border */
+	width: auto !important;
+}
+
+.ocf_information_bar_outer .toggleable_tray_title img {
+	{$BETA_CSS_PROPERTY,opacity: 0.2;}
+}
+.ocf_information_bar_outer .toggleable_tray_title:hover img, body.touch_enabled .ocf_information_bar_outer body.touch_enabled .toggleable_tray_title img {
+	{$BETA_CSS_PROPERTY,opacity: 1.0;}
+}
+
+.ocf_member_column>*:first-child, .ocf_guest_column>*:first-child {
+	margin-top: 0;
+}
+.ocf_member_column>*:last-child, .ocf_guest_column>*:last-child {
+	margin-bottom: 0;
+}
+
+.ocf_member_column, .ocf_guest_column {
+	padding: 0.8em;
+	vertical-align: top;
+	margin-{!en_left}: -1px;
+	{+START,IF,{$NOT,{$MOBILE}}}
+		float: {!en_left};
+		border-{!en_left}: 1px solid {$GET,pale_border};
+	{+END}
+}
+
+{+START,IF,{$NOT,{$MOBILE}}}
+	.ocf_member_column {
+		height: 8em;
+	}
+{+END}
+
+.ocf_guest_column {
+	{+START,IF,{$NOT,{$MOBILE}}}
+		height: 3em;
+	{+END}
+}
+
+.ocf_guest_column_a * {
+	vertical-align: middle;
+}
+
+.ocf_guest_column_a .horizontal_links, .ocf_guest_column_a .horizontal_links li {
+	vertical-align: top; /* This rebalances it in the alignment order due to the extra element nesting */
+}
+
+.ocf_guest_column_b {
+	float: {!en_right};
+	text-align: {!en_right};
+}
+
+.ocf_member_column_a {
+	text-align: center;
+	vertical-align: middle;
+	border-{!en_left}: 0;
+	{+START,IF,{$NOT,{$MOBILE}}}
+		width: 112px;
+	{+END}
+	{+START,IF,{$MOBILE}}
+		float: right;
+	{+END}
+}
+
+.ocf_member_column_a img {
+	max-width: 100px;
+}
+
+.ocf_member_column_b {
+	border-{!en_left}: 0;
+	{+START,IF,{$NOT,{$MOBILE}}}
+		width: 20em;
+	{+END}
+}
+
+.ocf_member_column_c {
+	{+START,IF,{$NOT,{$MOBILE}}}
+		width: 25.3em; /* The extra 0.3em needed for iPad */
+	{+END}
+}
+
+.ocf_member_column_d {
+	white-space: nowrap;
+}
+
+.ocf_member_column_d .actions_list {
+	margin: 5px 0 0 0;
+}
+
+.ocf_member_column_title {
+	font-weight: bold;
+	display: inline;
+}
+
+.ocf_member_column_pts {
+	color: {$GET,red_highlight_text};
+	font-weight: bold;
+}
+
+.ocf_notification {
+	margin: 1em auto;
+	{+START,IF,{$NOT,{$MOBILE}}}
+		width: 60%;
+	{+END}
+	display: block;
+}
+
+.ocf_notification strong {
+	white-space: nowrap;
+}
+
+.ocf_notification_type {
+	font-weight: bold;
+	text-align: center;
+	font-size: 1.1em;
+}
+
+.ocf_notification_post {
+	{+START,IF,{$NOT,{$MOBILE}}}
+		padding: 1em;
+	{+END}
+	{+START,IF,{$MOBILE}}
+		padding: 1em 0;
+	{+END}
+}
+
+.ocf_search_box {
+	margin-bottom: 1em;
+}
+
+.ocf_search_box input[type="text"] {
+	margin: 0;
+	width: 14em;
+}
+
+.ocf_member_column_last_visit {
+	white-space: normal;
+}
+
+.ocf_member_column_last_visit ul {
+	margin: 0;
+	padding: 0;
+}
+
+.ocf_member_column_last_visit span {
+	white-space: nowrap;
+}
+
+.ocf_member_column_last_visit li {
+	white-space: nowrap;
+	{+START,IF,{$NOT,{$MOBILE}}}
+		margin: 0 0 0 1em;
+	{+END}
+	{+START,IF,{$MOBILE}}
+		margin: 0.5em 0 0.5em 1em;
+	{+END}
+	padding: 0;
+	list-style-type: none;
+}
+
+/*
+=========================
+=========Footer==========
+=========================
+*/
+
+.box___block_main_bottom_bar>.box_inner {
+	margin: 0;
+}
+
+.box___block_main_bottom_bar>.box_inner>h2 {
+	margin: 0;
+	padding: 0.3em 0 0.4em 0;
+}
+
+.ocf_bottom_bar_left_column {
+	width: 10em;
+}
+
+.ocf_bottom_bar_right_column {
+	width: 100%;
+}
+
+.ocf_stats_table {
+	border: 0;
+	border-collapse: collapse;
+}
+
+.ocf_stats_usersonline_1, .ocf_stats_main_1 {
+	text-align: right !important;
+	padding: 0.8em;
+}
+
+.ocf_stats_usersonline_1 .associated_links_block_group {
+	text-align: right;
+}
+
+.ocf_stats_usersonline_1 .field_name {
+	margin-bottom: 0.1em;
+}
+.ocf_stats_usersonline_1 .associated_links_block_group {
+	margin-top: 0.1em;
+}
+
+.ocf_stats_usersonline_2 {
+	border-{!en_left}: 1px solid {$GET,dark_border};
+	border-bottom: 1px solid {$GET,dark_border};
+	padding: 0.5em;
+}
+
+.ocf_stats_usersonline_2 .users_online {
+	margin-bottom: 0.3em;
+}
+
+.ocf_stats_usersonline_2 .usergroups p, .ocf_stats_usersonline_2 .horizontal_links_comma {
+	display: inline-block;
+	width: auto;
+}
+
+.ocf_stats_main_1 {
+	font-weight: bold;
+}
+
+.ocf_stats_main_2 {
+	border-{!en_left}: 1px solid {$GET,dark_border};
+	padding: 0.5em;
+	line-height: 1.4em;
+}
+
+.ocf_stats_main_2 .birthday {
+	white-space: nowrap;
+}
+
+a.ocf_gcol_1, a.ocf_gcol_1:visited, a.ocf_gcol_1:hover {
+	color: {$GET,gcol_1};
+}
+a.ocf_gcol_2, a.ocf_gcol_2:visited, a.ocf_gcol_2:hover {
+	color: {$GET,gcol_2};
+}
+a.ocf_gcol_3, a.ocf_gcol_3:visited, a.ocf_gcol_3:hover {
+	color: {$GET,gcol_3};
+}
+a.ocf_gcol_4, a.ocf_gcol_4:visited, a.ocf_gcol_4:hover {
+	color: {$GET,gcol_4};
+}
+a.ocf_gcol_5, a.ocf_gcol_5:visited, a.ocf_gcol_5:hover {
+	color: {$GET,gcol_5};
+}
+a.ocf_gcol_6, a.ocf_gcol_6:visited, a.ocf_gcol_6:hover {
+	color: {$GET,gcol_6};
+}
+a.ocf_gcol_7, a.ocf_gcol_7:visited, a.ocf_gcol_7:hover {
+	color: {$GET,gcol_7};
+}
+a.ocf_gcol_8, a.ocf_gcol_8:visited, a.ocf_gcol_8:hover {
+	color: {$GET,gcol_8};
+}
+a.ocf_gcol_9, a.ocf_gcol_9:visited, a.ocf_gcol_9:hover {
+	color: {$GET,gcol_9};
+}
+a.ocf_gcol_10, a.ocf_gcol_10:visited, a.ocf_gcol_10:hover {
+	color: {$GET,gcol_10};
+}
+a.ocf_gcol_11, a.ocf_gcol_11:visited, a.ocf_gcol_11:hover {
+	color: {$GET,gcol_11};
+}
+a.ocf_gcol_12, a.ocf_gcol_12:visited, a.ocf_gcol_12:hover {
+	color: {$GET,gcol_12};
+}
+a.ocf_gcol_13, a.ocf_gcol_13:visited, a.ocf_gcol_13:hover {
+	color: {$GET,gcol_13};
+}
+a.ocf_gcol_14, a.ocf_gcol_14:visited, a.ocf_gcol_14:hover {
+	color: {$GET,gcol_14};
+}
+a.ocf_gcol_15, a.ocf_gcol_15:visited, a.ocf_gcol_15:hover {
+	color: {$GET,gcol_15};
+}
+
+/*
+=========================
+======Post history=======
+=========================
+*/
+
+.ocf_post_history_header {
+	margin-top: 1em;
+	text-align: {!en_left};
+}
+
+.ocf_history_post_meta {
+	border: 1px solid;
+}
+
+.ocf_history_post_meta .field_name {
+	display: block;
+}
+
+.ocf_history_post_head {
+	font-style: italic;
+}
+
+h2.ocf_post_history_header {
+	color: {$GET,slightly_seeded_text};
+}
+
+.ocf_history_post_links {
+	text-align: {!en_right};
+	border: 1px solid;
+	padding: 5px;
+	font-style: italic;
+}
+
+.ocf_history_post_buttons {
+	text-align: {!en_right};
+	border: 1px solid;
+	padding-bottom: 20px;
+}
+
+.ocf_history_post {
+	width: 62%;
+	border: 1px solid;
+}
+
+.ocf_history_post textarea {
+	border: 0;
+	padding-{!en_left}: 10px;
+}
+
+/*
+=========================
+=====Member profiles=====
+=========================
+*/
+
+.ocf_profile_column {
+	background-color: {$GET,area_background};
+	border: 1px solid {$GET,pale_border};
+}
+
+.ocf_profile_about_field_name_column {
+	width: 13em;
+}
+
+.ocf_profile_about_field_value_column {
+	width: 100%;
+}
+
+{+START,IF,{$MOBILE}}
+	.ocf_profile_column {
+		float: left;
+		width: 95.5%;
+		padding: 0.5em;
+		font-size: 0.9em;
+	}
+
+	.ocf_profile_column h2 {
+		margin-top: 1em;
+	}
+
+	.ocf_profile_column ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	.ocf_profile_column li {
+		margin: 0.5em 0 0 1.5em;
+		padding: 0;
+	}
+
+	.ocf_profile_main {
+		padding: 10px 0 0 0;
+		float: left;
+		width: 100%;
+	}
+
+	.ocf_member_profile_avatar {
+		text-align: center;
+		margin-top: 1em;
+	}
+{+END}
+
+{+START,IF,{$NOT,{$MOBILE}}}
+	.ocf_profile_column {
+		float: right;
+		width: 156px;
+		padding: 1em;
+		font-size: 0.9em;
+	}
+
+	.ocf_profile_column h2:first-child {
+		margin-top: 0;
+	}
+	.ocf_profile_column h2 {
+		margin-top: 2em;
+	}
+
+	.ocf_profile_column ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	.ocf_profile_column li {
+		margin: 0 0 0 18px;
+		padding: 0;
+	}
+
+	.ocf_profile_main {
+		padding: 1em 190px 0 0;
+	}
+
+	.ocf_member_profile_avatar {
+		text-align: center;
+		margin-top: 1.5em;
+	}
+{+END}
+
+.ocf_member_profile_avatar img {
+	border: 1px solid {$GET,standard_border};
+	max-width: 100px;
+}
+
+.ocf_profile_points {
+	margin: 0.5em 0;
+	text-align: center;
+	font-size: 1.3em;
+}
+
+.ocf_member_profile_photo {
+	text-align: center;
+}
+
+.ocf_member_profile_photo img {
+	border: 1px solid {$GET,standard_border};
+	max-width: 100%;
+}
+
+table.ocf_profile_details {
+	border-collapse: collapse;
+}
+
+table.ocf_profile_details th {
+	padding: 0.5em;
+	border-right: 1px solid {$GET,pale_border};
+	font-weight: bold !important;
+}
+
+table.ocf_profile_details td {
+	padding: 0.5em;
+	font-size: 1em;
+}
+
+table.ocf_profile_details .associated_details {
+	display: block;
+}
+
+table.ocf_profile_fields {
+	border-collapse: collapse;
+}
+
+table.ocf_profile_fields th {
+	color: {$GET,heading_text};
+	border-right: 1px solid {$GET,pale_border};
+}
+
+{+START,IF,{$MOBILE}}
+	table.ocf_profile_fields th {
+		font-size: 1em;
+		padding: 0.5em 0.5em 0.5em 0;
+	}
+{+END}
+
+{+START,IF,{$NOT,{$MOBILE}}}
+	table.ocf_profile_fields th {
+		font-size: 1.2em;
+		padding: 1em 1em 1em 0;
+	}
+{+END}
+
+table.ocf_profile_fields td {
+	padding: 1em 0 1em 1em;
+	font-size: 0.9em;
+}
+
+table.ocf_profile_fields th, table.ocf_profile_fields td {
+	border-bottom: 1px solid {$GET,pale_border};
+}
+
+table.ocf_profile_fields tr:last-of-type th, table.ocf_profile_fields tr:last-of-type td {
+	border-bottom: none;
+}
+
+table.ocf_profile_statistics th {
+	border-right: 1px solid {$GET,pale_border};
+}
+
+{+START,IF,{$MOBILE}}
+	table.ocf_profile_statistics {
+		border-collapse: collapse;
+		font-size: 0.9em;
+	}
+
+	table.ocf_profile_statistics th {
+		font-weight: normal;
+		padding: 0.5em 0.5em 0.5em 0;
+	}
+
+	table.ocf_profile_statistics td {
+		padding: 0.5em 0 0.5em 0.5em;
+		min-width: 1em;
+	}
+{+END}
+
+{+START,IF,{$NOT,{$MOBILE}}}
+	table.ocf_profile_statistics {
+		border-collapse: collapse;
+	}
+
+	table.ocf_profile_statistics th {
+		font-weight: bold;
+		padding: 0.5em 1em 0.5em 0;
+	}
+
+	table.ocf_profile_statistics td {
+		padding: 0.5em 0 0.5em 1em;
+	}
+{+END}
+
+ul.ocf_profile_friends {
+	overflow: hidden;
+	list-style-type: none;
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+ul.ocf_profile_friends li {
+	{+START,IF,{$MOBILE}}
+		margin: 1em 0 0 0;
+		padding: 1em;
+	{+END}
+
+	{+START,IF,{$NOT,{$MOBILE}}}
+		float: left;
+		margin: 1em 1em 0 0;
+		padding: 0.5em;
+		width: 12.5em;
+	{+END}
+	list-style-type: none;
+	border: 1px solid {$GET,standard_border};
+	background: {$GET,area_background};
+	display: block;
+	min-height: 3.6em;
+}
+
+ul.ocf_profile_friends li a {
+	text-decoration: none;
+}
+
+ul.ocf_profile_friends li:hover {
+	background-color: {$GET,area_hover_3_background};
+}
+
+ul.ocf_profile_friends li .associated_details {
+	display: block;
+}
+
+/*
+=========================
+====Viewing usergroups===
+=========================
+*/
+
+.group_add_member {
+	text-align: center;
+}
+
+.group_add_member>div {
+	display: inline-block;
+}
+
+/*
+=========================
+======Miscellaneous======
+=========================
+*/
+
+.ocf_join_1 {
+	text-align: center;
+}
+
+.ocf_emoticon_cell {
+	float: {!en_left};
+	text-align: center;
+	padding: 0.5em 0;
+}
+
+.ocf_sig_requirements {
+	{+START,IF,{$NOT,{$MOBILE}}}
+		width: 25em;
+		margin: 1em auto;
+	{+END}
+}
+
+.ocf_avatar_page_old_avatar {
+	float: {!en_right};
+	padding: 1em 0 1em 1em;
+	text-align: {!en_right};
+}
+
+.ocf_current_sig_wrap {
+	margin-bottom: 1.5em;
+}
+
+.ocf_whisper_lead_in {
+	margin: 1.5em 0;
+}
+
+.ocf_whisper_choose_box {
+	{+START,IF,{$MOBILE}}
+		margin-bottom: 1em;
+		width: 100%;
+		float: left;
+	{+END}
+	{+START,IF,{$NOT,{$MOBILE}}}
+		margin-bottom: 3em;
+		padding: 4em 2em 4em 4em;
+		width: 50%;
+		{$BETA_CSS_PROPERTY,box-sizing: border-box;}
+	{+END}
+}
+.ocf_whisper_choose_box.right {
+	{+START,IF,{$NOT,{$MOBILE}}}
+		padding: 4em 4em 4em 2em;
+	{+END}
+}
+
+.ocf_whisper_choose_box p:first-child {
+	min-height: 11em; /* Makes the left/right boxes the same height */
+}
+
+.decryption_overlay label {
+	font-weight: bold;
+}
+
+.ocf_member_box_avatar {
+	float: left;
+	margin-right: 1em;
+	max-width: 100px !important;
+}
+
+.tooltip .ocf_member_box_avatar_touching {
+	max-width: 245px; /* Based on tooltip size */
+	float: left; /* Forces it on same line as avatar, rather than wrapping */
+}
+
+.ocf_isolated_post_meta_column {
+	width: 13em;
+}
+
+.ocf_isolated_post_content_column {
+	width: 100%;
+}
+
+/*
+=========================
+side_ocf_personal_topics=
+=========================
+*/
+
+.topic_list_topic {
+	margin-bottom: 1em;
+}
+
+.topic_list_title {
+	font-weight: bold;
+}
+
+.topic_list_title * {
+	white-space: inherit !important;
+}
+
+.topic_list_meta {
+	font-size: 0.85em;
+}
+
+.topic_list_by {
+	font-weight: bold;
+}
+
+/*
+=========================
+=======Print rules=======
+=========================
+*/
+
+@media print {
+	.ocf_member_bar_etc,
+	.ocf_page_buttons,
+	.ocf_topic_marker,
+	.ocf_member_signature .comcode_hide {
+		display: none;
+	}
+}

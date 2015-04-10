@@ -1,0 +1,4 @@
+<?php
+return unserialize("a:6:{i:0;a:1:{i:0;a:5:{i:0;s:35:\"tcpfunc_BLOCK_MAIN_PT_NOTIFICATIONS\";i:1;a:0:{}i:2;i:1;i:3;s:0:\"\";i:4;s:0:\"\";}}i:1;a:0:{}i:2;s:27:\"BLOCK_MAIN_PT_NOTIFICATIONS\";i:3;N;i:4;N;i:5;s:218:\"\$TPL_FUNCS['tcpfunc_BLOCK_MAIN_PT_NOTIFICATIONS']=\"eval(\\\$RESET_VAR_CODE); echo output_tempcode_parameter( isset (\\\$bound_NOTIFICATIONS)?\\\$bound_NOTIFICATIONS:NULL,\\\"NOTIFICATIONS\\\",\\\"BLOCK_MAIN_PT_NOTIFICATIONS\\\");\";\n\";}");
+
+?>

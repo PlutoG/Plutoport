@@ -1,0 +1,4033 @@
+/*
+ {$BRAND_NAME`}
+ Copyright (c) ocProducts, 2004-2012
+*/
+
+/*
+This is ocPortal's main CSS file. It defines colours, re-used styles, and core styles for core functionality.
+
+The CSS is written to CSS3/HTML5 standards. Parts that are still considered experimental on some browsers are surrounded using the Tempcode 'BETA_CSS_PROPERTY' symbol, which automatically injects CSS prefixes for all major browsers.
+
+Most sizes are defined in 'em' units. 1em is roughly 10px, depending on font size. If a size is not defined in 'em' then it is probably due to it being dependent on the size of some related image.
+'em' units are great because they scale very well. If you reduce the font size, the spacings will reduce as well, in proportion.
+
+{!en_left} and {!en_right} usually resolve to left and right respectively. Right-to-left languages (commonly Arabic and Hebrew) will be the opposite. We only test with Left-to-right, but are likely to accept patches to fix any little glitches that may have developed over time.
+
+When editing theme CSS we recommend you comment out code you're removing and heavily comment your own changes - this will make it much easier for you to upgrade your theme to new versions. ocPortal minifies outputted CSS, so there is no performance penalty for doing this.
+*/
+
+/*
+=========================
+========Colours==========
+=========================
+*/
+
+/* Used to initiate equations (although running the Theme Wizard replaces these with what the user chooses - which is how it works) */
+{$THEME_WIZARD_COLOR,#94979d,seed,100% 94979D}
+{$THEME_WIZARD_COLOR,#ffffff,WB,100% FFFFFF}
+{$THEME_WIZARD_COLOR,#000000,BW,100% 000000}
+/*Theme seed is: {$GET,seed}*/
+
+/* The fundamental website */
+{$THEME_WIZARD_COLOR,#e3eaf6,fixed_width_background,11% (seed sat_to 100) + 89% WB}
+{$THEME_WIZARD_COLOR,#8ba4ca,fixed_width_border,61% seed + 39% WB}
+{$THEME_WIZARD_COLOR,#ffffff,main_background,100% WB}
+{$THEME_WIZARD_COLOR,#ebebeb,main_2_background,92% WB + 8% BW}
+
+/* Header */
+{$THEME_WIZARD_COLOR,#e3e9f2,header_background,100% area_2_background}
+{$THEME_WIZARD_COLOR,#426aa9,navigation_background,100% seed}
+{$THEME_WIZARD_COLOR,#edf2f9,navigation_text,15% navigation_top + 85% WB}
+{$THEME_WIZARD_COLOR,#426aa9,navigation_message_text,100% seed}
+{$THEME_WIZARD_COLOR,#a5bde1,global_navigation_underline_current,75% navigation_top + 25% FFFFFF}
+{$THEME_WIZARD_COLOR,#ffffff,global_navigation_hover,100% WB}
+{$THEME_WIZARD_COLOR,#edf2f9,global_navigation_text,15% navigation_top + 85% WB}
+{$THEME_WIZARD_COLOR,#fbffc1,zone_jump_out_1_shadow,100% FBFFC1}
+{$THEME_WIZARD_COLOR,#ff4264,zone_jump_out_2_shadow,100% FF4264}
+
+/* Colours to mirror UI conventions (i.e. non-thematic) */
+{$THEME_WIZARD_COLOR,#000000,native_ui_foreground,100% 000000}
+{$THEME_WIZARD_COLOR,#ffffff,native_ui_background,100% FFFFFF}
+{$THEME_WIZARD_COLOR,#feffcb,native_ui_active_background,100% FEFFCB}
+{$THEME_WIZARD_COLOR,#316AC5,native_ui_selected_background,100% 316AC5}
+{$THEME_WIZARD_COLOR,#ffffff,native_ui_selected_foreground,100% FFFFFF}
+{$THEME_WIZARD_COLOR,#ffffff,native_ui_button_foreground,100% FFFFFF}
+{$THEME_WIZARD_COLOR,#ff0000,native_ui_alertfield_background,100% FF0000}
+{$THEME_WIZARD_COLOR,#ffffff,native_ui_alertfield_foreground,100% FFFFFF}
+{$THEME_WIZARD_COLOR,#888888,unfilled_input_text,100% 888888}
+{$THEME_WIZARD_COLOR,#888888,locked_input_field,100% 888888}
+{$THEME_WIZARD_COLOR,#94979d,comfortable_input_field_text,65% area_2_background + 35% WB}
+{$THEME_WIZARD_COLOR,#b5b5b5,tab_border,100% b5b5b5}
+{$THEME_WIZARD_COLOR,#008000,adwords_style_text,100% 008000} /* Google adwords style */
+{$THEME_WIZARD_COLOR,#ffffff,floating_section_background,100% WB}
+{$THEME_WIZARD_COLOR,#fffcc4,floating_alert_background,100% fffcc4}
+
+/* Colours to mirror human understandings (i.e. non-thematic) */
+{$THEME_WIZARD_COLOR,#ffffaa,yellow_highlight_background,100% #FFFFAA}
+{$THEME_WIZARD_COLOR,#ff8888,red_highlight_background,100% FF8888}
+{$THEME_WIZARD_COLOR,#ff8888,light_error_border,100% FF8888}
+{$THEME_WIZARD_COLOR,#fff2f2,light_error_background,95% WB + 5% FF0000}
+{$THEME_WIZARD_COLOR,#d91522,red_highlight_text,80% FF0000 + 20% seed}
+{$THEME_WIZARD_COLOR,#00aa00,green_highlight_text,100% 00AA00}
+{$THEME_WIZARD_COLOR,#ede2e4,required_background,60% (area_4_background hue_to 0) + 40% area_background}
+{$THEME_WIZARD_COLOR,#ebe6eb,required_2_background,40% (area_4_background hue_to 0) + 60% area_background}
+{$THEME_WIZARD_COLOR,#000000,dark_shadow,100% BW}
+
+/* For standard elements */
+{$THEME_WIZARD_COLOR,#325180,heading_text,76% seed + 24% BW}
+{$THEME_WIZARD_COLOR,#051225,a.hover,30% a.link + 70% BW}
+{$THEME_WIZARD_COLOR,#113871,a.visited,67% (seed sat_to 85) + 33% BW}
+{$THEME_WIZARD_COLOR,#123d7b,a.link,73% (seed sat_to 85) + 27% BW}
+{$THEME_WIZARD_COLOR,#bdcbe1,th_secondary_text,35% seed + 65% WB}
+{$THEME_WIZARD_COLOR,#a2b6d5,hr,60% area_background + 40% seed}
+{$THEME_WIZARD_COLOR,#325180,divider_line,76% seed + 24% BW}
+
+/* Borders */
+{$THEME_WIZARD_COLOR,#6b81a1,standard_border,95% (seed sat_to 33) + 5% BW}
+{$THEME_WIZARD_COLOR,#4b5a71,dark_border,70% standard_border + 30% BW}
+{$THEME_WIZARD_COLOR,#c1cee3,pale_border,33% seed + 67% WB}
+
+/* Backgrounds (quiet a variety, as we need to be able to stack them, to have both hover and active effects, to have zebra striping, and various other levels of perceived focus) */
+{$THEME_WIZARD_COLOR,#eaeff6,area_background,11% seed + 89% WB}
+{$THEME_WIZARD_COLOR,#e3e9f2,area_2_background,15% seed + 85% WB}
+{$THEME_WIZARD_COLOR,#eef2f7,area_3_background,60% area_2_background + 40% WB}
+{$THEME_WIZARD_COLOR,#d9e1ee,area_4_background,20% seed + 80% WB}
+{$THEME_WIZARD_COLOR,#f4f4f4,area_5_background,3% seed + 97% WB}
+{$THEME_WIZARD_COLOR,#f2f5f9,area_faded_background,80% area_background + 20% WB}
+{$THEME_WIZARD_COLOR,#d9e1ee,area_zebra_background,20% seed + 80% WB}
+{$THEME_WIZARD_COLOR,#e6d8df,area_hover_background,92% (area_background hue_to 92) + 8% BW}
+{$THEME_WIZARD_COLOR,#d9e1ee,area_hover_2_background,20% seed + 80% WB}
+{$THEME_WIZARD_COLOR,#c2d1e5,area_hover_3_background,93% (area_background sat_to 15) + 7% BW}
+{$THEME_WIZARD_COLOR,#c2d1e5,area_current_background,93% (area_background sat_to 15) + 7% BW}
+{$THEME_WIZARD_COLOR,#dce2eb,point_of_interest_background,97% area_2_background + 2% BW}
+{$THEME_WIZARD_COLOR,#6b81a1,footer_background,95% (seed sat_to 33) + 5% BW}
+{$THEME_WIZARD_COLOR,#607490,footer_2_background,85% (seed sat_to 33) + 15% BW}
+/* Backgrounds, employing color wheel theory */
+{$THEME_WIZARD_COLOR,#d9e1ee,area_highlight_background,20% seed + 80% WB}
+{$THEME_WIZARD_COLOR,#d9ecee,area_highlight_left_complement_background,20% (seed hue_add -21) + 80% WB}
+{$THEME_WIZARD_COLOR,#dbd9ee,area_highlight_right_complement_background,20% (seed hue_add +21) + 80% WB}
+{$THEME_WIZARD_COLOR,#eee6d9,area_highlight_complement_background,20% (seed hue_add 128) + 80% WB}
+
+/* Text */
+{$THEME_WIZARD_COLOR,#0d1522,slightly_seeded_text,20% seed + 80% BW}
+{$THEME_WIZARD_COLOR,#3d434c,slightly_seeded_gray_text,20% WB + 65% BW + 15% seed}
+{$THEME_WIZARD_COLOR,#325180,area_text,76% seed + 24% BW}
+{$THEME_WIZARD_COLOR,#2a3d5a,area_key_text,53% (seed sat_to 53) + 47% BW}
+{$THEME_WIZARD_COLOR,#0d2d5d,area_link,55% (seed sat_to 86) + 45% BW}
+{$THEME_WIZARD_COLOR,#0a1019,area_2_link,15% seed + 85% BW}
+{$THEME_WIZARD_COLOR,#1a2a44,area_2_link_hover,40% seed + 60% BW}
+{$THEME_WIZARD_COLOR,#8497b3,point_of_interest_border,50% dark_border + 50% WB}
+/* Text, employing color wheel theory */
+{$THEME_WIZARD_COLOR,#214f55,slightly_seeded_left_complement_text,50% (seed hue_add -21) + 50% BW}
+{$THEME_WIZARD_COLOR,#262155,slightly_seeded_right_complement_text,50% (seed hue_add +21) + 50% BW}
+{$THEME_WIZARD_COLOR,#554121,slightly_seeded_complement_text,50% (seed hue_add 128) + 50% BW}
+
+/* Special colour for box titles */
+{$THEME_WIZARD_COLOR,#ffffff,box_title_text,100% WB}
+{$THEME_WIZARD_COLOR,#cccccc,box_title_text_hover,80% WB + 20% BW}
+{$THEME_WIZARD_COLOR,#426aa9,box_title_background,100% seed}
+
+/* Special colour for code/quote boxes */
+{$THEME_WIZARD_COLOR,#8ea6cb,code_title_background,60% seed + 40% WB}
+{$THEME_WIZARD_COLOR,#3f3f3f,code_text,25% code_background + 85% BW}
+{$THEME_WIZARD_COLOR,#fafbfd,code_background,25% area_background + 75% WB}
+{$THEME_WIZARD_COLOR,#7f9ac5,code_border,68% seed + 32% WB}
+
+/* Drop down menus should look 'above' the site */
+{$THEME_WIZARD_COLOR,#c1cee3,dropdown_menu_background,33% seed + 67% WB}
+{$THEME_WIZARD_COLOR,#d9e1ee,dropdown_menu_text,20% seed + 80% WB}
+
+/* Global-level messages should stand out compared to other styling */
+{$THEME_WIZARD_COLOR,#ebe773,message_border,100% EBE773} /* Intentionally coloured on all themes */
+{$THEME_WIZARD_COLOR,#4b5a71,message_highlighted_part,70% standard_border + 30% BW}
+
+/* Footer */
+{$THEME_WIZARD_COLOR,#8ba4ca,footer_tinting,61% seed + 39% WB}
+{$THEME_WIZARD_COLOR,#ffffff,footer_text,100% WB}
+{$THEME_WIZARD_COLOR,#dbe6f7,inverted_text,35% footer_tinting + 65% WB}
+
+/* Used for image generation */
+{$THEME_WIZARD_COLOR,#e8edf6,washed_out,10% (seed sat_to 85) + 90% WB}
+{$THEME_WIZARD_COLOR,#5a85c5,lgrad,67% (seed sat_to 95) + 33% FFFFFF} /* We always want the light source coming from the top */
+{$THEME_WIZARD_COLOR,#345495,dgrad,95% (seed sat_to 65) + 5% 000000} /* We always want the light source coming from the top */
+{$THEME_WIZARD_COLOR,#5477bd,ltgrad,67% (seed sat_to 135) + 33% FFFFFF}  /* We always want the light source coming from the top */
+{$THEME_WIZARD_COLOR,#707c95,dtgrad,95% (seed sat_to 25) + 5% 000000} /* We always want the shadows at the bottom */
+{$THEME_WIZARD_COLOR,#e1e2e3,comcode_quote_left,48% comcode_quote_right + 52% WB}
+{$THEME_WIZARD_COLOR,#bfc1c4,comcode_quote_right,100% code_title_background}
+{$THEME_WIZARD_COLOR,#0e2a63,a.link__dark,63% (seed sat_to 85) + 37% BW}
+{$THEME_WIZARD_COLOR,#030a17,a.hover__dark,20% a.link + 80% BW}
+{$THEME_WIZARD_COLOR,#707377,special_borderer,76% seed + 24% BW}
+{$THEME_WIZARD_COLOR,#0a1e47,special_middle,45% (seed sat_to 85) + 65% BW}
+{$THEME_WIZARD_COLOR,#597bbf,ocfpostindicator,65% (seed sat_to 100) + 35% WB}
+{$THEME_WIZARD_COLOR,#597bf7,ocfredirectindicator,65% (seed sat_to 100) + 35% WB + 000038 - 061600}
+{$THEME_WIZARD_COLOR,#93a9d5,navigation_peak,90% navigation_top + 10% WB}
+{$THEME_WIZARD_COLOR,#869fd0,navigation_top,48% (seed sat_to 98) + 52% FFFFFF}
+{$THEME_WIZARD_COLOR,#2d5098,navigation_bot,97% (seed sat_to 71) + 3% 000000}
+
+/*
+=========================
+===Overridden Elements===
+=========================
+*/
+
+html, body {
+	border: 0;
+}
+
+body, .email_body, textarea, input, td, th {
+	/* 'Open Sans' is a Google font, and only will be enabled if uncommented in HTML_HEAD.tpl -- so normally it is Segoe UI (Windows, newer version of Tahoma) or Tahoma that is active (available on Windows and Mac since Leopard) or a similar humanist sans-serif font */
+	font-family: 'Open Sans', 'Segoe UI', Tahoma, Verdana, Arial, Helvetica, sans-serif;
+}
+
+tt, kbd, samp {
+	font-weight: bold;
+	font-size: 1.25em;
+}
+
+abbr, acronym {
+	border-bottom: 1px dotted; /* For Safari, which does not have it by default */
+}
+
+/* Give all browsers a 'q' tag with smart quotes */
+q:before {
+	content: "\201c";
+}
+q:after {
+	content: "\201d";
+}
+
+/* Re-apply default styles non-HTML5-aware browsers */
+aside, header, footer, nav, article, section, figure {
+	display: block;
+}
+
+textarea, input, code {
+	font-size: 1em;
+}
+
+/* Our little 'typing' effect */
+input[type="text"]:focus, input[type="password"]:focus {
+	background: url('{$IMG;,keyboard}') right center no-repeat {$GET,native_ui_background};
+}
+
+input[type="text"][size="6"]:focus {
+	background-image: none;
+}
+
+/* Normally a browser default, but gets inherited on some phones */
+input[type="text"], input[type="password"], input[type="color"], input[type="email"], input[type="number"], input[type="range"], input[type="search"], input[type="tel"], input[type="url"], textarea, select {
+	background-color: {$GET,native_ui_background};
+	color: {$GET,native_ui_foreground};
+}
+input[type="text"]:disabled, input[type="password"]:disabled, input[type="color"]:disabled, input[type="email"]:disabled, input[type="number"]:disabled, input[type="range"]:disabled, input[type="search"]:disabled, input[type="tel"]:disabled, input[type="url"]:disabled, textarea:disabled, select:disabled {
+	color: gray;
+}
+
+a, .button_hyperlink {
+	color: {$GET,a.link};
+}
+a:visited {
+	color: {$GET,a.visited};
+}
+a:hover, .button_hyperlink:hover {
+	color: {$GET,a.hover};
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+	color: {$GET,heading_text};
+	border-bottom: 1px solid {$GET,pale_border};
+}
+h1 {
+	font-size: 1.6em;
+	margin-top: 0.27em; /* Consistency with boxes (so gap between header and content is consistent), but rationalised against higher em font size */
+}
+h2 {
+	font-size: 1.3em;
+}
+h3 {
+	font-size: 1.1em;
+}
+h3 a, h3 a:hover {
+	text-decoration: none;
+}
+h4 {
+	font-size: 1em;
+	font-weight: bold;
+}
+/* An iframe screen */
+.opens_below h1 {
+	display: none;
+}
+
+td, th {
+	vertical-align: top;
+	padding: 0.25em;
+}
+th>p:first-child, td>p:first-child, th>h2:first-child, td>h3:first-child {
+	margin-top: 0;
+}
+th>p:last-child, td>p:last-child {
+	margin-bottom: 0;
+}
+th, .fake_th {
+	background-color: {$GET,box_title_background};
+	color: {$GET,box_title_text};
+	font-weight: bold;
+	text-align: center;
+}
+th a, th a:hover, th a:visited, .fake_th a, .fake_th a:hover, .fake_th a:visited {
+	color: {$GET,box_title_text};
+}
+thead>tr>th, .boxless_space .box>table>thead>tr>th, .pte_set_box .box>table>thead>tr>th {
+	background-color: {$GET,box_title_background};
+	color: {$GET,box_title_text};
+	background-repeat: repeat-x;
+}
+.box>table>thead>tr>th {
+	background: {$GET,point_of_interest_background};
+	color: {$GET,area_key_text};
+}
+/* .de_th makes a th look like a td, yet allows us to use correct markup */
+td, th.de_th {
+	color: {$GET,slightly_seeded_text};
+	font-weight: normal;
+	text-align: {!en_left};
+	font-weight: normal;
+	border: 0;
+}
+th.de_th {
+	background-color: transparent;
+	background-image: none;
+}
+th.de_th a, th.de_th a:hover, th.de_th a:visited {
+	color: {$GET,slightly_seeded_text};
+}
+
+hr {
+	height: 0;
+	border: 0;
+	border-bottom: 2px dotted {$GET,hr};
+	text-align: left; /* Fixes difference with Opera */
+}
+
+img {
+	display: inline;
+	border: 0;
+}
+
+blockquote {
+	margin: 1em 0;
+}
+
+iframe {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+/*input[type="text"],textarea {  So Comcode can be typed
+	unicode-bidi: bidi-override;
+	direction: ltr;
+}*/
+#htmlarea input[type="text"], #htmlarea textarea {
+	unicode-bidi: normal;
+	direction: {!dir};
+}
+
+{+START,IF,{$MOBILE}}
+	select {
+		max-width: 100px;
+	}
+
+	/* On mobiles we want maximum fluidity */
+
+	table, table.do_next_section {
+		table-layout: auto !important;
+
+		/* Allows wrapping */
+		overflow-x: visible !important;
+		overflow-y: visible !important;
+	}
+	.field_name_column, .field_input_column {
+		width: auto !important;
+	}
+	* {
+		white-space: normal !important;
+		{$BETA_CSS_PROPERTY,word-wrap: break-word !important;}
+	}
+{+END}
+
+/* Cool effect to change how text selection looks; not valid CSS, but is safe */
+::selection {
+	background: {$GET,yellow_highlight_background};
+}
+
+/* Stop Chrome breaking our datalist display with an arrow */
+input.input_username::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+/*
+=========================
+======Global Layout======
+=========================
+*/
+
+/* Consider .website_body as 'body': it is just we cannot put our styles directly on body because sometimes this gets used in things we should not mess with such as the WYSIWYG editors frame (which is #htmlarea) and e-mails */
+body.website_body {
+	padding: 0 !important;
+	margin: 0;
+	color: {$GET,slightly_seeded_text};
+	background-color: {$GET,main_background};
+}
+.email_body .box {
+	color: {$GET,slightly_seeded_text};
+}
+body.website_body.frame {
+	background: transparent; /* Don't assume too much for a frame, it may be nested inside a box for example */
+}
+
+{+START,IF,{$CONFIG_OPTION,fixed_width}}{+START,IF,{$NOT,{$MOBILE}}}
+	html>body#main_website { /* #main_website targets only the main site screen, avoiding frames etc */
+		/* Want to change the tiled background?
+			Try this Google search to get image ideas http://www.google.co.uk/search?tbm=isch&q=tile+background
+			Find how to edit the referenced "outer_background" theme image by doing an Admin Zone search for "outer_background"
+		*/
+		background: url('{$IMG;,outer_background}');
+
+		background-color: {$GET,fixed_width_background};
+		background-attachment: fixed;
+	}
+	#main_website #main_website_inner {
+		width: 980px;
+		position: relative;
+		margin: 15px auto 15px auto;
+		border: 1px solid {$GET,fixed_width_border};
+		{$BETA_CSS_PROPERTY,box-shadow: 0 0 20px {$GET,standard_border};}
+	}
+{+END}{+END}
+
+/* htmlarea=WYSIWYG editor */
+body.website_body, #htmlarea {
+	font-size: 13px;
+}
+#htmlarea {
+	margin: 0;
+	color: {$GET,slightly_seeded_text};
+	background-color: {$GET,main_background};
+}
+
+body#main_website {
+	margin: 0;
+
+	/* To stop it scaling down if we are applying "width=device-width" and forcing a page to displaying non-mobile */
+	{+START,IF,{$NOT,{$MOBILE}}}
+		min-width: 1000px;
+	{+END}
+}
+
+body#main_website #main_website_inner {
+	overflow: hidden;
+}
+
+body#main_website #main_website_inner .global_middle_outer {
+	min-height: 350px;
+}
+
+/* If not #main_website, it'll be one of these (the names correspond to the templates used) */
+body#basic_html_wrap {
+	margin: 0;
+}
+body#standalone_html_wrap {
+	margin: 0;
+}
+
+header {
+	background-color: {$GET,header_background};
+	{+START,IF,{$NOT,{$CONFIG_OPTION,fixed_width}}}
+		{$BETA_CSS_PROPERTY,box-shadow: 0 0 2px 2px {$GET,navigation_background};}
+	{+END}
+}
+
+header h1 {
+	margin: 0;
+	{+START,IF,{$MOBILE}}
+		width: 100%;
+		text-align: center;
+	{+END}
+	border: 0;
+}
+
+{+START,IF,{$NOT,{$MOBILE}}}
+	.logo {
+		float: left;
+	}
+
+	/*
+	Commented out by default.
+	If you enable it will turn off the standard logo and replace it with a big header image.
+	Don't enable if banners addon is still installed
+
+	Find how to edit the referenced "header" theme image by doing an Admin Zone search for "header"
+	*/
+	/*
+	.logo_outer {
+		margin-bottom: 8px;
+		width: 980px;
+		height: 100px;
+		float: left;
+		background: url('{$IMG;,header}') no-repeat !important;
+	}
+
+	.logo_outer * {
+		display: none;
+	}
+
+	.global_navigation {
+		margin-top: 99px !important;
+		text-align: center !important;
+		min-height: 30px !important;
+	}
+	*/
+{+END}
+
+.global_navigation {
+	font-size: 0.95em;
+	{+START,IF,{$MOBILE}}
+		text-align: center !important;
+		margin: 0 auto;
+		padding: 8px 0 9px 0;
+	{+END}
+	{+START,IF,{$NOT,{$MOBILE}}}
+		text-align: right;
+		margin-top: 60px;
+		padding: 5px 5px 0 0;
+		background: url('{$IMG;,zone_gradient}') repeat-x;
+		min-height: 24px;
+	{+END}
+	font-weight: bold;
+	color: {$GET,navigation_text};
+	background-color: {$GET,navigation_background};
+	background-position: left bottom;
+	background-size: 100% 100%;
+}
+
+.global_banner {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.text_banner {
+	width: 13.5em;
+	font-family: 'Arial', sans-serif;
+	background-color: {$GET,native_ui_background};
+}
+
+.text_banner a {
+	font-size: 1.3em;
+	display: block;
+}
+
+.text_banner_l_text {
+	color: {$GET,adwords_style_text};
+	font-size: 0.9em;
+}
+
+/* This is applied to the screen title, which is specially included on each screen; in the case of Comcode pages it is the first level 1 title. The screen title is by default an h1, but we define the styles separately so we can style this special title independently (there are lots of cool things we could do to it) */
+.screen_title {
+	margin-top: 0.35em;
+	margin-bottom: 0.8em;
+	min-width: 300px;
+	padding-bottom: 6px; /* For better alignment with breadcrumbs to the right */
+}
+.screen_title li span {
+	display: block;
+}
+
+/* .hero_section is specially designed to wrap around a title and some text, to give a 'hero' introduction for the front page of a site (standard marketing technique) */
+.hero_section {
+	{$BETA_CSS_PROPERTY,background-image: linear-gradient(to bottom right\, {$GET,main_background}\, {$GET,main_2_background});}
+	font-size: 1.25em;
+	color: {$GET,slightly_seeded_text};
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Choose better font for larger text */
+	padding: 2em 3em;
+	margin-bottom: 3em;
+	position: relative;
+	left: -0.8em;
+	margin-top: 3px;
+}
+.hero_section h1 {
+	font-size: 2.6em;
+	margin-bottom: 0.1em;
+	text-decoration: none;
+	border-bottom: none;
+	color: inherit;
+}
+.hero_section * {
+	margin-top: 0;
+}
+.hero_section .hero_button a {
+	text-decoration: none;
+	padding: 0.5em;
+	background-image: none !important;
+	margin-bottom: 1em;
+	{$BETA_CSS_PROPERTY,background-image: linear-gradient(to bottom\, {$GET,lgrad}\, {$GET,dgrad}) !important;}
+	font-size: 0.9em;
+}
+
+.global_breadcrumbs {
+	padding: 7px 0 0 0;
+	{+START,IF,{$NOT,{$MOBILE}}}
+		{+START,IF,{$CONFIG_OPTION,fixed_width}}
+			text-align: {!en_right};
+		{+END}
+		{+START,IF,{$NOT,{$CONFIG_OPTION,fixed_width}}}
+			float: {!en_right};
+		{+END}
+		margin-left: 0.5em;
+	{+END}
+}
+.global_breadcrumbs abbr {
+	white-space: nowrap;
+}
+{+START,IF,{$MOBILE}}
+	.global_breadcrumbs {
+		margin-bottom: 1em;
+	}
+{+END}
+
+.non_accessibility_redundancy .breadcrumbs {
+	width: 100%;
+}
+
+.breadcrumbs {
+	font-weight: bold;
+}
+
+.breadcrumbs .sep:after, .associated_breadcrumbs .sep:after {
+	content: " \00A0\00BB " !important;
+	display: inline-block;
+	font-size: 0.9em;
+	{$BETA_CSS_PROPERTY,opacity: 0.5;}
+}
+.breadcrumbs .sep:last-child:after, .associated_breadcrumbs .sep:last-child:after {
+	content: "" !important;
+}
+
+.breadcrumbs_img {
+	margin-{!en_right}: 4px;
+}
+
+.breadcrumbs_img, .breadcrumbs span .breadcrumbs_img a {
+	vertical-align: middle;
+}
+
+.title_tagline {
+	font-size: 0.95em;
+	padding-bottom: 2em;
+	margin-top: -1.5em;
+	color: {$GET,area_key_text};
+}
+.box_inner>.title_tagline {
+	margin-top: 0;
+}
+
+body#main_website #main_website_inner, html>body div.global_middle_faux {
+	background-color: {$GET,main_background};
+
+	/* Want to set a tiled background?
+		Uncomment the code below
+		Try this Google search to get image ideas http://www.google.co.uk/search?tbm=isch&q=tile+background
+		Find how to edit the referenced "inner_background" theme image by doing an Admin Zone search for "inner_background"
+	*/
+	/*background: url('{$IMG;,inner_background}');*/
+}
+
+.global_middle_outer {
+	margin-top: 0.8em;
+}
+{+START,IF,{$NOT,{$CONFIG_OPTION,collapse_user_zones}}}
+	.zone_running_ .global_middle_outer {
+		margin-top: 0; /* Splash page style design, tighter spacing */
+	}
+	.zone_running_ .global_side_panel {
+		margin-top: 0.8em;
+	}
+{+END}
+
+.global_middle {
+	/*overflow: hidden; Breaks Safari so we'll let the surrounding element contain floats*/
+
+	margin-bottom: 1em;
+
+	/* Add some spacing. This will be overwritten to 1.5em in rules below if we have panels */
+	padding-{!en_left}: 1em;
+	padding-{!en_right}: 1em;
+}
+
+{+START,IF,{$MOBILE}}
+	.global_middle {
+		padding-{!en_left}: 0.4em;
+		padding-{!en_right}: 0.4em;
+		{$BETA_CSS_PROPERTY,text-size-adjust: none;}
+	}
+
+	body.overlay {
+		width: 285px;
+		{$BETA_CSS_PROPERTY,box-sizing: border-box;}
+	}
+
+	.overlay h1 {
+		display: none;
+	}
+{+END}
+
+body.popup_spacer {
+	padding: 1em !important;
+}
+body.popup_spacer h2 {
+	margin-top: 0;
+}
+
+#panel_bottom {
+	margin: 0 1em;
+}
+
+#panel_top .ocf_member_bar_etc { /* Should not be flush with site borders (but the menu above it will be, so don't do the whole panel */
+	margin: 0 1em;
+}
+
+#panel_left {
+	float: {!en_left};
+	{+START,IF,{$NOT,{$MOBILE}}}
+		margin-{!en_left}: 1em;
+	{+END}
+	{+START,IF,{$MOBILE}}
+		padding-{!en_left}: 1em;
+		padding-{!en_right}: 0.5em;
+		{$BETA_CSS_PROPERTY,box-sizing: border-box;}
+	{+END}
+}
+
+#panel_right {
+	float: {!en_right};
+	{+START,IF,{$NOT,{$MOBILE}}}
+		margin-{!en_right}: 1em;
+	{+END}
+	{+START,IF,{$MOBILE}}
+		padding-{!en_right}: 1em;
+		padding-{!en_left}: 0.5em;
+		{$BETA_CSS_PROPERTY,box-sizing: border-box;}
+	{+END}
+}
+
+.global_side_panel {
+	{$BETA_CSS_PROPERTY,word-wrap: break-word;}
+	{+START,IF,{$NOT,{$MOBILE}}}
+		width: 13em;
+	{+END}
+	{+START,IF,{$MOBILE}}
+		width: 50%;
+	{+END}
+	color: {$GET,slightly_seeded_gray_text};
+}
+.global_middle_faux>.global_side_panel {
+	width: auto;
+}
+{+START,IF,{$MOBILE}}
+	.panel_solo {
+		width: 100% !important;
+		padding-left: 1em !important;
+		padding-right: 1em !important;
+	}
+{+END}
+
+/* Spacing around middle column if it adjoins panels */
+#panel_left ~ .global_middle {
+	margin-{!en_left}: 13em;
+	padding-{!en_left}: 3.5em;
+}
+#panel_right ~ .global_middle {
+	margin-{!en_right}: 13em;
+	padding-{!en_right}: 3.5em;
+}
+#panel_right:first-child ~ .global_middle { /* If no left panel, lets give some extra space */
+	margin-{!en_right}: 16em;
+}
+
+.global_side_panel .hide_if_in_panel {
+	display: none;
+}
+
+.hide_if_not_in_panel {
+	display: none;
+}
+
+.global_side_panel .hide_if_not_in_panel {
+	display: block;
+}
+
+.global_side_panel h2 {
+	border-bottom: 1px solid;
+	text-transform: lowercase;
+	font-weight: normal;
+	width: 50%;
+	padding-{!en_left}: 10px;
+	margin-{!en_left}: 10px;
+}
+
+.global_messages {
+	margin: 1em;
+}
+.global_middle_faux .global_messages {
+	margin: 1em 0; /* Probably inside a frame, hence already indented outside said frame */
+}
+
+.global_message {
+	min-height: 21px;
+}
+
+.global_message span, .global_message img {
+	vertical-align: middle;
+}
+.global_message strong {
+	text-shadow: 1px 1px 0px {$GET,message_highlighted_part};
+	font-weight: normal;
+}
+.global_message img {
+	margin-{!en_right}: 0.5em;
+	float: left;
+}
+.global_message>span {
+	margin-left: 22px;
+	padding-left: 0.5em;
+	display: block;
+}
+
+footer {
+	background-color: {$GET,footer_background};
+	margin-top: 2em;
+	{$BETA_CSS_PROPERTY,background-image: linear-gradient(to bottom\, {$GET,footer_background}\, {$GET,footer_2_background});}
+
+	color: {$GET,footer_text};
+	padding: 1.5em;
+	{+START,IF,{$NOT,{$CONFIG_OPTION,fixed_width}}}
+		{$BETA_CSS_PROPERTY,box-shadow: 0 0 2px 2px {$GET,footer_tinting};}
+	{+END}
+	{+START,IF,{$MOBILE}}
+		text-align: center;
+	{+END}
+}
+
+footer .button_hyperlink,
+footer a,
+footer a:visited,
+footer .horizontal_links {
+	color: {$GET,area_2_link};
+}
+
+footer a:hover, footer .button_hyperlink:hover {
+	color: {$GET,area_2_link_hover};
+}
+
+footer .global_footer_left {
+	float: {!en_left};
+}
+
+footer .footer_button_loading {
+	{$BETA_CSS_PROPERTY,opacity: 0.4;} display: inline-block;/*Needed for IE8*/
+}
+
+footer .global_footer_left .horizontal_buttons {
+	width: auto;
+	white-space: nowrap;
+	padding-top: 4px;
+	margin-top: 0;
+	font-size: 0; /* Fixes wrapping problem */
+}
+
+footer .global_footer_left .horizontal_buttons>li:first-child {
+	padding-left: 0 !important;
+}
+footer .global_footer_left .horizontal_buttons>li {
+	padding-left: 8px !important;
+}
+
+footer .su_form input {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+footer .special_page_type_form select, footer .special_page_type_form select option.label {
+	color: {$GET,unfilled_input_text};
+}
+
+footer .special_page_type_form select option {
+	color: {$GET,native_ui_foreground};
+}
+
+footer .global_footer_left .horizontal_buttons, footer .su_form, footer .special_page_type_form {
+	float: left;
+	padding-right: 20px;
+	margin-top: 5px;
+}
+
+footer .global_footer_left img {
+	vertical-align: middle;
+	{$BETA_CSS_PROPERTY,transition: all 0.3s ease-in-out;}
+	{$BETA_CSS_PROPERTY,transform: scale(0.9);}
+}
+
+footer .global_footer_left img:hover {/*, .menu_type__dropdown li:hover>img*/
+	{$BETA_CSS_PROPERTY,transform: scale(1.0);}
+}
+
+footer .global_footer_button_ref_point {
+	position: absolute;
+	font-size: 13px; /* Puts it back, as was set to zero elsewhere */
+}
+
+footer .global_footer_left #special_page_type {
+	width: 17em;
+}
+
+footer .global_footer_right {
+}
+
+footer .global_community_message {
+	float: {!en_right};
+	font-size: 0.9em;
+	padding-top: 1px;
+	color: {$GET,inverted_text};
+	font-weight: bold;
+	padding-bottom: 4px;
+	text-shadow: 2px 2px 2px {$GET,standard_border};
+}
+
+footer .invisible_ref_point {
+	position: absolute;
+	width: 0;
+}
+
+footer .global_copyright {
+	{+START,IF,{$NOT,{$MOBILE}}}
+		text-align: center;
+	{+END}
+}
+
+footer .global_minilinks {
+	padding-top: 0.3em;
+	font-size: 0.9em;
+	white-space: nowrap; /* Stops logout link wrapping around in Firefox 3.6 */
+	{+START,IF,{$NOT,{$MOBILE}}}
+		text-align: center;
+	{+END}
+}
+
+footer .global_minilinks .horizontal_links {
+	width: auto;
+	font-size: 1.1em;
+}
+
+footer .global_minilinks a, footer .global_minilinks .button_hyperlink {
+	white-space: nowrap !important; /* So works on mobiles */
+	{+START,IF,{$MOBILE}}
+		padding: 4px;
+	{+END}
+}
+
+/*
+=========================
+==With Special Meanings==
+=========================
+*/
+
+.autocomplete { /* Membership of this class is used as a tag to allow form autocompletion */
+}
+
+.xhtml_validator_off { /* Membership of this class is used as a tag to turn off the XHTML-validator */
+	display: inline-block; /* To stop it breaking text-align: center */
+	width: 100%;
+}
+
+.textarea_scroll { /* Turns off word-wrapping for a textarea: this has to be done using Javascript so that the invalid 'wrap' property isn't written into the XHTML */
+}
+
+body .accessibility_hidden { /* Contents should be made visible (or interpreted) for accessibly representation but hidden for normal visual display */
+	/* Shift it out of the viewport */
+	position: absolute;
+	top: -256000px;
+	left: 0;
+	visibility: hidden; /* So browser doesn't waste resources rendering */
+	display: block; /* stops browser bugs where it interacts with the layout flow incorrectly */
+}
+
+.non_accessibility_redundancy { /* Contents should be skipped by screen readers */
+	{+START,IF,{$MOBILE}}
+		display: none;
+	{+END}
+}
+
+/*
+=========================
+=====Reusable Styles=====
+=========================
+*/
+
+/* All floats within this will be contained to it */
+.float_surrounder {
+	overflow: hidden;
+}
+
+/* Commonly used to indicate there is no content to display */
+.nothing_here, .more_here {
+	font-size: 0.95em;
+	padding-{!en_left}: 15px;
+	margin: 1.5em;
+	margin-{!en_left}: 10px;
+	background-image: url('{$IMG;,cannot_show}');
+	background-position: {!en_left} 5px;
+	background-repeat: no-repeat;
+}
+
+/* Used for styling the 'last edited' information */
+.edited {
+	font-size: 0.85em;
+	padding-{!en_left}: {$?,{$MOBILE},0.7,2}em;
+	font-style: italic;
+}
+div.edited {
+	margin: 2em 0;
+}
+
+/* Usage guide: Use on the immediate surrounding element, and make sure that there is no loose text inside (put that in a span) */
+.vertical_alignment, .vertical_alignment>* {
+	vertical-align: middle !important;
+}
+
+/* Used to align inline images to the top of the rendering context */
+.top_vertical_alignment, .top_vertical_alignment * {
+	vertical-align: top;
+}
+
+/* Makes an item of media (e.g. an image) get framed nicely. NB: We do not use this for galleries (which are more elaborate), although that has similar styling with .gallery_grid_cell */
+.media_box {
+	margin: {$?,{$MOBILE},1,1.5}em 0;
+	text-align: center;
+}
+.media_box a {
+	outline: 0;
+}
+.media_box img {
+	border: 1px solid {$GET,standard_border};
+	{$BETA_CSS_PROPERTY,box-sizing: border-box;}
+	{$BETA_CSS_PROPERTY,box-shadow: 3px 3px 10px {$GET,standard_border};}
+	max-width: 100%;
+}
+
+.scale_down { /* Membership of this class is used as a tag to turn on image scale-to-fit */
+	max-width: 100%;
+	{$BETA_CSS_PROPERTY,box-sizing: border-box;}
+}
+
+/* Used in a few places to make member links stand out */
+a.fancy_user_link em {
+	text-shadow: 2px 2px 2px {$GET,point_of_interest_border};
+	padding: 4px 0;
+	letter-spacing: 1px;
+}
+a.fancy_user_link, a.fancy_user_link:visited, a.fancy_user_link:hover {
+	font-size: 1em;
+	font-weight: bold;
+	border: 1px dashed {$GET,point_of_interest_border};
+	border-left: 0;
+	border-right: 0;
+	display: block;
+	background-color: {$GET,point_of_interest_background};
+	margin-bottom: 7px;
+	text-decoration: none;
+	padding: 2px 2px !important;
+}
+.post_poster a.fancy_user_link, .post_poster a.fancy_user_link:visited, .post_poster a.fancy_user_link:hover {
+	display: inline-block;
+}
+a.fancy_user_link:hover {
+	border-color: {$GET,dark_border};
+	background-color: {$GET,area_faded_background};
+}
+
+/* A button styled to look like a link */
+input.button_hyperlink {
+	border-style: none;
+	background-color: transparent;
+	text-decoration: underline;
+	font-weight: bold;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+	text-align: {!en_left};
+}
+
+/* Used to make a button look more like an icon - i.e. undoes button-face styling */
+.button_icon {
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+/* Makes a link tag (a) look like it's not anything special (we use these tags as tab points sometimes) */
+.non_link,
+.non_link:visited,
+.non_link:hover {
+	color: inherit !important;
+	text-decoration: none;
+	cursor: default;
+}
+
+.trinav_wrap {
+	overflow: hidden;
+	{$BETA_CSS_PROPERTY,background-image: linear-gradient(to bottom\, {$GET,main_2_background}\, {$GET,main_background});}
+	{+START,IF,{$NOT,{$MOBILE}}}
+		margin-bottom: 2em;
+	{+END}
+	{$BETA_CSS_PROPERTY,border-radius: 20px;}
+}
+.trinav_wrap.nograd {
+	background-image: none;
+}
+
+/* Used e.g. for "paginating" through the calendar (i.e. infinite pagination left/right) */
+.trinav_left, .trinav_mid, .trinav_right {
+	margin: 1em 0 2em 0;
+}
+.trinav_left {
+	float: left;
+	{+START,IF,{$NOT,{$MOBILE}}}
+		margin-left: 26px;
+	{+END}
+	{+START,IF,{$MOBILE}}
+		width: 33%;
+		margin-left: 0.5em;
+	{+END}
+	text-align: left;
+}
+.trinav_mid { /* Used for putting a button in the middle of the left/right pagination, for example */
+	text-align: center;
+}
+.trinav_mid.text {
+	padding-top: 6px;
+}
+.trinav_mid.text>span:before {
+	content: "(";
+}
+.trinav_mid.text>span:after {
+	content: ")";
+}
+.trinav_right {
+	float: right;
+	{+START,IF,{$NOT,{$MOBILE}}}
+		margin-left: 10px;
+		margin-right: 26px;
+	{+END}
+	{+START,IF,{$MOBILE}}
+		width: 33%;
+		margin-right: 0.5em;
+	{+END}
+	text-align: right;
+}
+
+/* An inline avatar */
+.embedded_mini_avatar {
+	width: 0.9em;
+	height: 0.9em;
+	vertical-align: bottom;
+	cursor: pointer;
+	border: 1px solid {$GET,standard_border};
+}
+
+/* Error/status messages */
+span.red_alert, a.red_alert, strong.red_alert, em.red_alert {
+	color: {$GET,red_highlight_text};
+	font-weight: bold;
+}
+div.red_alert, p.red_alert, .inline_wip_message {
+	{$BETA_CSS_PROPERTY,border-radius: 5px;}
+	padding: 1em 1em 1em 40px;
+}
+div.red_alert, p.red_alert {
+	border: 1px solid {$GET,light_error_border};
+	background: url('{$IMG;,messageicons/notice}') 0.6em 0.75em no-repeat {$GET,light_error_background};
+}
+.inline_wip_message {
+	border: 1px solid {$GET,dark_border};
+	background: url('{$IMG;,messageicons/notice}') 0.6em 0.75em no-repeat {$GET,area_background};
+}
+
+.field_name {
+	font-weight: bold;
+}
+
+/* Used when a label is the only thing in front of a textarea/list */
+.lonely_label  {
+	margin-bottom: 0.2em;
+	display: block;
+	font-size: 1.1em;
+}
+.lonely_label+ul, .lonely_label+ol, .lonely_label+p {
+	margin-top: 0.2em;
+}
+
+/* Used for a little 'X comments' box, but with the comments bit showing as an HTML tooltip */
+.comment_count:empty {
+	display: none;
+}
+.comment_count {
+	display: inline-block;
+	white-space: nowrap;
+	border: 1px dotted {$GET,dark_border};
+	background-color: {$GET,main_background} !important;
+	text-align: center;
+	width: 1.1em;
+	font-size: 0.9em;
+	position: relative;
+}
+.comment_count:hover {
+	border-right-color: transparent;
+}
+.comment_count strong {
+	background-color: {$GET,main_background} !important;
+}
+.comment_count span {
+	display: none;
+	padding-right: 2px;
+	background-color: {$GET,main_background} !important;
+}
+.comment_count:hover span {
+	display: inline-block;
+	position: absolute;
+	padding-left: 0.3em;
+	margin-top: -1px; /* Brings it up to the 1px dotted borders level (need to do as out of flow) */
+
+	/* Similar styles to tooltips */
+	background-color: {$GET,area_faded_background};
+	border: 1px dotted {$GET,dark_border};
+	z-index: 1000;
+
+	border-left: 0;
+}
+
+th.meta_data_title {
+	font-weight: bold !important;
+}
+
+.global_navigation .inline_wip_message {
+	background-color: {$GET,navigation_message_text};
+}
+
+.help_jumpout {
+	padding: 2px 0;
+	padding-left: 50px;
+	background: url('{$IMG;,help_jumpout}') no-repeat left center;
+}
+
+.being_dragged {
+	background: {$GET,native_ui_background};
+}
+
+.img_thumb { /* Membership of this class is used as a tag to turn on the thumbnail blend effect */
+	{$BETA_CSS_PROPERTY,opacity: 0.7;}
+	max-width: 100%;
+}
+.img_thumb:hover, body.touch_enabled .img_thumb {
+	{$BETA_CSS_PROPERTY,opacity: 1.0;}
+	{$BETA_CSS_PROPERTY,transition: opacity 0.2s linear !important;}
+}
+
+/*
+=========================
+=========Boxes===========
+=========================
+*/
+
+/* Boxes, which most blocks use to wrap their output */
+
+.box {
+	border: 1px solid {$GET,standard_border};
+	{$BETA_CSS_PROPERTY,border-radius: 5px;}
+
+	margin: 1em 0;
+
+	/* Want to change the tiled background?
+		Try this Google search to get image ideas http://www.google.co.uk/search?tbm=isch&q=tile+background
+		Find how to edit the referenced "block_background" theme image by doing an Admin Zone search for "block_background"
+	*/
+	background-image: url('{$IMG;,block_background}');
+	background-color: {$GET,area_background};
+	/* If the browser supports gradients, we'll put a nice box-filling gradient in here instead */
+	{$BETA_CSS_PROPERTY,background-image: linear-gradient(to bottom\, {$GET,area_background}\, {$GET,area_4_background});}
+
+	overflow: hidden;
+}
+/* Accordion boxes don't have margins */
+.box___standardbox_accordion {
+	margin: 0 !important;
+}
+/* Don't do margins for boxes at the end of frames */
+/*#standalone_html_wrap>div>.box:first-child {	Actually we want this, due to how .fp_col_block has been written
+	margin-top: 0;
+}*/
+#standalone_html_wrap>div>.box:last-child {
+	margin-bottom: 0;
+}
+
+/* Don't let boxes on side panels get too much styling (focuses the eye away) */
+.global_side_panel .box, .box.nested {
+	background-color: {$GET,area_5_background};
+}
+.box.nested {
+	border: 1px solid {$GET,pale_border};
+}
+.global_side_panel .box_inner>h1, .global_side_panel .box_inner>h2, .global_side_panel .box_inner>h3, .global_side_panel .box_inner>h4, .global_side_panel .box_inner>h5, .global_side_panel .box_inner>h6, .global_side_panel .box>.toggleable_tray_title {
+	background-image: none;
+}
+
+.box>.box_inner, .box>.toggleable_tray {
+	margin: 0.5em;
+}
+.email_body .box .box_inner { /* Outlook.com does not support margins or complex use of the sibling selector */
+	margin: 0;
+	padding: 0.5em;
+}
+
+.box_inner>h1, .box_inner>h2, .box_inner>h3, .box_inner>h4, .box_inner>h5, .box_inner>h6, .toggleable_tray_title, #standalone_html_wrap .box .box .box_inner>h2, #standalone_html_wrap .box .box .box_inner>h3 {
+	{$BETA_CSS_PROPERTY,border-top-left-radius: 3px;}
+	{$BETA_CSS_PROPERTY,border-top-right-radius: 3px;}
+	background-color: {$GET,box_title_background};
+	background-image: url('{$IMG;,gradient}');
+	background-repeat: repeat-x;
+	color: {$GET,box_title_text};
+	text-align: center;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 1em;
+	border: 0;
+
+	/* .box_inner set us in the wrong position, so fiddle around a bit to move us back to be flush */
+	margin: -0.506em 0 0.506em -0.506em; /* Would be -0.5 but Opera does not seem to like */
+	padding: 0.4em 0.8em 0.4em 0.3em;
+	width: 100%;
+}
+.box_inner>h2>.right .button_page {
+	vertical-align: top;
+}
+
+.box_inner>h1 a, .box_inner>h2 a, .box_inner>h3 a, .box_inner>h4 a, .box_inner>h5 a, .box_inner>h6 a, .toggleable_tray_title a, .box_inner>h1 a:visited, .box_inner>h2 a:visited, .box_inner>h3 a:visited, .box_inner>h4 a:visited, .box_inner>h5 a:visited, .box_inner>h6 a:visited, .toggleable_tray_title a:visited {
+	color: inherit;
+	text-decoration: underline;
+}
+a.toggleable_tray_button { /* Override above for toggleable_tray_button */
+	text-decoration: none !important;
+}
+.box_inner>h1 a:hover, .box_inner>h2 a:hover, .box_inner>h3 a:hover, .box_inner>h4 a:hover, .box_inner>h5 a:hover, .box_inner>h6 a:hover, .toggleable_tray_title a:hover {
+	color: {$GET,box_title_text_hover};
+}
+
+/* If we want a box to standout less, give it 'pale_box' */
+.pale_box.box, .pale_box .box {
+	border: 1px solid {$GET,pale_border} !important;
+}
+.pale_box.box h2, .pale_box .box h2, .pale_box.box h3, .pale_box .box h3 {
+	background-color: {$GET,point_of_interest_background} !important;
+	background-image: none;
+	color: {$GET,area_key_text} !important;
+}
+
+/* If you want to mark a region as box-less, wrap a div with class 'boxless_space' around it -- it'll invoke a very different kind of modern styling */
+.boxless_space .box {
+	background: none;
+	border: none !important;
+	padding: 0;
+	margin: 1em 0; /* Big margin, necessary as the boxes have no border around them */
+	{$BETA_CSS_PROPERTY,border-radius: 0;}
+}
+.frame>.boxless_space .box:first-child {
+	margin-top: 0; /* No top margin for boxes in a frame */
+}
+.boxless_space .box:last-child {
+	margin-bottom: 0; /* No margin on the last box */
+}
+.boxless_space .fp_col_blocks_wrap .box {
+	margin: 0.5em 0; /* Half-sized margins for the fake-columns on front pages, as the overflow blocks margin collapsing */
+}
+.boxless_space .box>.box_inner {
+	margin: 0;
+}
+.boxless_space .box>.box_inner>h1, .boxless_space .box>.box_inner>h2, .boxless_space .box>.box_inner>h3, .boxless_space .box>.box_inner>h4, .boxless_space .box>.box_inner>h5, .boxless_space .box>.box_inner>h6, .boxless_space .box>.toggleable_tray_title {
+	background: url('{$IMG;,boxless_title_leadin_rightcomp}') no-repeat !important;
+	color: {$GET,slightly_seeded_right_complement_text} !important;
+	text-align: {!en_left};
+	font-size: 15px;
+	margin: 0.5em 0;
+	font-family: Arial;
+	padding: 0 0 2px 21px;
+	width: auto;
+	font-weight: bold;
+	text-transform: uppercase;
+	{$BETA_CSS_PROPERTY,border-radius: 0;}
+}
+.global_side_panel .boxless_space .box>.box_inner>h1, .global_side_panel .boxless_space .box>.box_inner>h2, .global_side_panel .boxless_space .box>.box_inner>h3, .global_side_panel .boxless_space .box>.box_inner>h4, .global_side_panel .boxless_space .box>.box_inner>h5, .global_side_panel .boxless_space .box>.box_inner>h6 {
+	background: url('{$IMG;,boxless_title_leadin_leftcomp}') no-repeat !important;
+	color: {$GET,slightly_seeded_left_complement_text} !important;
+}
+.boxless_space .buttons_group, .boxless_space .associated_links_block_group, .boxless_space .media_box, .boxless_space .proceed_button {
+	text-align: left;
+}
+
+/* ... Dividers within boxless area... */
+.boxless_space .box + .box, .boxless_space .box + .fp_col_blocks_wrap, .boxless_space .fp_col_blocks_wrap + .box {
+	border-top: 2px solid {$GET,standard_border} !important;
+	margin-top: 1.5em;
+	padding-top: 0.5em;
+}
+.boxless_space .box .box + .box, .comments_wrapper .boxless_space .box + .box { /* Nested dividers more subtle */
+	border-top: 0 !important;
+}
+.global_side_panel .boxless_space .box .box + .box {
+	padding-top: 0;
+}
+.global_middle .boxless_space .box .box + .box:before, .comments_wrapper .boxless_space .box + .box:before {
+	content: "";
+	width: 60%;
+	display: block;
+	margin: 0 auto;
+	border-top: 2px dotted {$GET,pale_border} !important;
+	padding-top: 0.4em;
+}
+.boxless_space .box + .fp_col_blocks_wrap {
+	padding-top: 0;
+}
+
+/* Boxes under boxes shouldn't have the title style - would be ugly */
+
+.box .box .box_inner>h1, .box .box .box_inner>h2, .box .box .box_inner>h3, .box .box .box_inner>h4, .box .box .box_inner>h5, .box .box .box_inner>h6, .box .box .toggleable_tray_title, #standalone_html_wrap .box .box .box .box_inner>h2, #standalone_html_wrap .box .box .box .box_inner>h3 {
+	background: none !important;
+	color: inherit !important;
+	padding-left: 0;
+	font-size: 1.1em;
+} /* This rule is not applied to boxes under the top level box in the preview (#standalone_html_wrap) as those should show verbatim */
+.box .box .box_inner>h1 a, .box .box .box_inner>h2 a, .box .box .box_inner>h3 a, .box .box .box_inner>h4 a, .box .box .box_inner>h5 a, .box .box .box_inner>h6 a, .box .box .toggleable_tray_title a, #standalone_html_wrap .box .box .box .box_inner>h2 a, #standalone_html_wrap .box .box .box .box_inner>h3 a {
+	color: {$GET,a.hover};
+}
+
+/* Expanding and contracting, mostly for boxes but not necessarily always */
+
+.toggleable_tray_title {
+	font-size: 1.1em;
+	font-weight: bold;
+	vertical-align: middle;
+	margin: 0; /* Outside .box_inner so remove the margin added above */
+	padding: 0.3em 0; /* Centered so needs no horizontal padding, which would also mess with our 100% width */
+}
+
+.toggleable_tray_button {
+	{$BETA_CSS_PROPERTY,transition: opacity 0.2s linear !important;}
+	outline: 0;
+	font-weight: bold;
+	text-decoration: none;
+	color: inherit !important;
+	cursor: pointer;
+}
+
+.toggleable_tray_button img {
+	float: {!en_right};
+	padding: 0 5px !important;
+}
+.toggleable_tray_button.ttb_left img {
+	float: {!en_left};
+}
+
+.toggleable_tray {
+	overflow: hidden;
+}
+
+/* Used very rarely if our toggleable boxes need some extra space at their top) */
+.toggleable_tray_pulldown_spacer {
+	padding-top: 1em;
+}
+
+/* Used in the Setup Wizard constructed block layouts in the start page */
+
+.fp_col_blocks_wrap {
+	overflow: hidden;
+}
+
+.fp_col_block {
+	{+START,IF,{$NOT,{$MOBILE}}}
+		width: 50%;
+	{+END}
+	{+START,IF,{$MOBILE}}
+		margin: 1em 0;
+		max-width: 100%;
+	{+END}
+	{$BETA_CSS_PROPERTY,box-sizing: border-box;}
+}
+
+.fp_col_block .pagination {
+	float: none;
+}
+.fp_col_block .pagination_per_page {
+	display: none;
+}
+.fp_col_block form + span {
+	margin-left: 0;
+}
+
+.fp_col_block .box {
+	margin-bottom: 0; /* margin-top from boxes below will work instead. This is needed as the "overflow: hidden" stops margin collapsing between the block contents and outside it */
+}
+
+.fp_col_block.left {
+	padding-{!en_right}: 0.5em;
+}
+.fp_col_block.right {
+	padding-{!en_left}: 0.5em;
+}
+.fp_col_block.left:last-child {
+	padding-{!en_right}: 0; /* Undo padding if actually there is nothing to the right of this */
+}
+
+/* Box/title-attached meta details */
+
+.meta_details {
+	font-size: 0.9em;
+	color: {$GET,area_text};
+	border-bottom: 1px dotted {$GET,pale_border};
+	{+START,IF,{$NOT,{$MOBILE}}}
+		width: 25em;
+	{+END}
+	max-width: 100%;
+	padding-{!en_left}: 0.5em;
+	padding-bottom: 0.5em;
+	margin-bottom: 1em;
+}
+
+h3+.meta_details, .newscat_img+.meta_details {
+	border-bottom: 0;
+	margin-top: -1em;
+	margin-bottom: 0.5em;
+}
+.box_inner>h3+.meta_details {
+	margin-top: 0;
+}
+
+.meta_details a, .meta_details a:visited {
+	text-decoration: none;
+	color: {$GET,area_link};
+}
+.meta_details a:hover {
+	color: {$GET,a.hover};
+}
+
+.global_side_panel .meta_details {
+	border-bottom: 0;
+	padding-left: 0;
+	padding-top: 0.5em;
+}
+
+/* Overlays are also based on boxes */
+
+.box.overlay {
+	{$BETA_CSS_PROPERTY,box-shadow: 0px 0px 20px {$GET,dark_shadow};}
+}
+
+.box.overlay .associated_links_block_group {
+	margin: 1em;
+}
+
+/*
+=========================
+========Spacing==========
+=========================
+*/
+
+/* These are short hand for defining very common layout patterns. They are quasi-semantic in that they tie into ocPortal's visual language. */
+
+.not_too_tall {
+	max-height: 30em;
+	overflow: auto;
+}
+
+.horizontal_scrolling {
+	overflow: auto;
+	padding-right: 1px; /* For non-aligning table borders */
+}
+
+.tiny_paragraph {
+	margin: 0.3em 0;
+}
+
+.whitespace_visible {
+	overflow: auto;
+	outline: 0;
+	white-space: pre;
+}
+
+.standard_indent {
+	padding-{!en_left}: 4em;
+}
+
+.mini_indent {
+	padding-{!en_left}: 2em;
+}
+
+hr.spaced_rule {
+	margin: 2em 0;
+}
+
+/* Used to indicate something showing underneath, in conjunction with an arrow image */
+.arrow_ruler {
+	text-align: center;
+}
+
+.inline_block {
+	text-align: {!en_left};
+	display: inline-block;
+}
+
+.inline_block .wide_table_wrap { /* Fixes Firefox bug */
+	overflow-x: visible;
+	overflow-y: visible;
+}
+
+.inline {
+	display: inline;
+}
+.left {
+	float: {!en_left};
+}
+.left.float_separation {
+	margin-{!en_right}: 1em;
+}
+
+.right {
+	float: {!en_right};
+}
+.right.float_separation {
+	margin-{!en_left}: 1em;
+}
+
+/* Something being shown for previewing, on its own so needs focus */
+.lonely_preview {
+	text-align: center;
+}
+
+/* Used to align stuff horizontally, i.e. force a gap between separate bits */
+.horiz_field_sep, ul.horizontal_links.horiz_field_sep {
+	padding-{!en_left}: 0.8em;
+}
+.horiz_field_sep {
+	display: inline-block !important;
+}
+ul.horizontal_links.horiz_field_sep {
+	display: inline !important;
+}
+
+/* Used e.g. on links that should not get split between lines */
+.must_show_together {
+	white-space: nowrap;
+}
+
+/*
+=========================
+=========Tables==========
+=========================
+*/
+
+.table_cell_nowrap {
+	white-space: nowrap;
+	display: inline-block;
+}
+
+.autosized_table {
+	table-layout: auto !important;
+}
+
+table.scrollable_inside {
+	table-layout: fixed; /* For permission setting stuff that can scroll off */
+}
+
+.centered_table_contents th, .centered_table_contents td {
+	vertical-align: middle;
+	text-align: center;
+}
+
+.wide_table_wrap {
+	overflow-x: auto;
+	overflow-y: hidden;
+
+	/* To add in the extra pixel needed for 2x1/2 overhanging borders that tables have, and also to shunt the alignment to compensate http://fantasai.inkedblade.net/style/discuss/collapsed-outer-border/ */
+	padding-right: 3px; /* Actually Chrome seems to need 2 (observed on form tables) */
+}
+
+.wide_table {
+	width: 100%;
+	{+START,IF,{$NOT,{$MOBILE}}}
+		table-layout: fixed;
+	{+END}
+	{+START,IF,{$MOBILE}}
+		overflow-x: scroll;
+	{+END}
+}
+
+.spaced_table th, .spaced_table td {
+	padding: 0.7em;
+}
+
+/* Undo any descendant spacing for nested tables made in WYSIWYG */
+.results_table table[cellpadding="0"] td, .results_table table[cellpadding="0"] th {
+	padding: 0;
+}
+.results_table table[border="0"] td, .results_table table[border="0"] th {
+	border: 0;
+}
+
+.highlighted_table_cell {
+	background-color: {$GET,area_current_background};
+}
+
+.results_table {
+	border-collapse: separate;
+	border-spacing: 0;
+	margin: 1em 0;
+}
+.wide_table_wrap>.results_table {
+	margin: 0; /* As overflow would cause margin doubling */
+}
+.wide_table_wrap + .wide_table_wrap>.results_table {
+	margin-top: 1em;
+}
+
+.results_table>thead>tr:first-child *:first-child, .results_table>tbody>tr:first-child>*:first-child {
+	{$BETA_CSS_PROPERTY,border-top-left-radius: 5px;}
+}
+.results_table>thead>tr:first-child *:last-child, .results_table>tbody>tr:first-child>*:last-child {
+	{$BETA_CSS_PROPERTY,border-top-right-radius: 5px;}
+}
+.results_table[summary*="{!COLUMNED_TABLE}"]>tbody>tr:first-child>*:first-child {
+	{$BETA_CSS_PROPERTY,border-top-left-radius: 0px;}
+}
+.results_table[summary*="{!COLUMNED_TABLE}"]>tbody>tr:first-child>*:last-child {
+	{$BETA_CSS_PROPERTY,border-top-right-radius: 0px;}
+}
+.results_table>tbody>tr:last-child>*:first-child {
+	{$BETA_CSS_PROPERTY,border-bottom-left-radius: 5px;}
+}
+.results_table>tbody>tr:last-child>*:last-child {
+	{$BETA_CSS_PROPERTY,border-bottom-right-radius: 5px;}
+}
+
+.results_table>*>tr>th {
+	text-align: right;
+}
+
+.results_table>thead>th {
+	text-align: center;
+}
+
+.results_table>*>tr>td, .results_table>*>tr>th {
+	border-top: 1px solid {$GET,standard_border};
+	border-right: 1px solid {$GET,standard_border};
+	padding: 0.5em;
+}
+.results_table>*>tr>td:first-child, .results_table>*>tr>th:first-child {
+	border-left: 1px solid {$GET,standard_border};
+}
+.results_table>tbody>tr:last-child>td, .results_table>tbody>tr:last-child>th {
+	border-bottom: 1px solid {$GET,standard_border};
+}
+
+table>*>.zebra_0>th, table>*>.zebra_0>td, div.zebra_0 {
+	background-color: {$GET,area_zebra_background} !important;
+	color: {$GET,slightly_seeded_text};
+}
+table>*>.zebra_1>th, table>*>.zebra_1>td, div.zebra_1 {
+	background-color: {$GET,area_background} !important;
+	color: {$GET,slightly_seeded_text};
+}
+div.zebra_0, div.zebra_1 {
+	border: 1px solid {$GET,standard_border};
+	padding: 0.5em;
+}
+div.zebra_0 p, div.zebra_1 p {
+	margin-top: 0;
+}
+div.zebra_0 p:last-child, div.zebra_1 p:last-child {
+	margin-bottom: 0;
+}
+div.zebra_0+div.zebra_1, div.zebra_1+div.zebra_0 {
+	border-top: 0;
+}
+
+.table_heading_cell {
+	padding: 1em 0.5em !important;
+	text-align: {!en_left};
+	background-color: {$GET,area_background} !important; /*  !important so precedence over th.dh */
+	font-weight: normal;
+}
+.table_heading_cell h2 {
+	margin: 0;
+}
+
+.thick_border th, .thick_border td {
+	border-top-width: 3px !important;
+}
+
+.field_name_column {
+	width: 14em;
+}
+
+.field_name_column_shorter {
+	width: 11em;
+}
+
+.field_input_column, .field_value_column {
+	width: 100%;
+}
+
+.field_sup_column {
+	width: 10em;
+}
+
+/*
+=========================
+=====Core Interfaces=====
+=========================
+*/
+
+.question_ui_buttons {
+	text-align: center;
+	margin-top: 15px;
+}
+
+.tooltip {
+	font-size: 1em;
+	padding: 0.5em;
+	background-color: {$GET,area_faded_background};
+	{$BETA_CSS_PROPERTY,background-image: linear-gradient(to bottom\, {$GET,area_faded_background}\, {$GET,area_background});}
+	border: 1px solid {$GET,point_of_interest_border};
+	{$BETA_CSS_PROPERTY,box-shadow: 3px 3px 10px {$GET,point_of_interest_border};}
+	z-index: 1000;
+	{$BETA_CSS_PROPERTY,opacity: 0.9;}
+	{$BETA_CSS_PROPERTY,word-wrap: break-word;}
+	{$BETA_CSS_PROPERTY,border-radius: 10px;}
+	color: {$GET,area_text};
+}
+.tooltip img {
+	max-width: 100%;
+	max-height: 200px;
+}
+.tooltip .shunted_button {
+	display: none;
+}
+.tooltip .whitespace_visible {
+	max-height: 5em;
+	overflow: auto;
+}
+.tooltip .associated_link {
+	display: none;
+}
+.tooltip_img {
+	position: absolute;
+	right: 3px;
+	top: 3px;
+}
+.tooltip h2 {
+	margin-top: 0;
+}
+.tooltip a, .tooltip a:visited, .tooltip a:hover {
+	text-decoration: none !important;
+	color: inherit !important;
+}
+.tooltip_fields {
+	border-collapse: collapse;
+	font-size: 0.85em;
+}
+.tooltip_fields th {
+	border-right: 1px solid {$GET,dark_border};
+	font-weight: bold !important;
+	padding-right: 1em;
+}
+.tooltip .tooltip_fields th {
+	white-space: nowrap;
+}
+.tooltip_fields td {
+	padding-left: 1em;
+}
+.tooltip_with_img {
+	padding-right: 30px;
+}
+.faded_tooltip_img {
+	{$BETA_CSS_PROPERTY,opacity: 0.2;} display: inline-block;/*Needed for IE8*/
+}
+
+.diff del {
+	color: {$GET,red_highlight_text};
+}
+.diff ins {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.results_table_under {
+	font-size: 0.85em;
+	margin: 1em 0;
+}
+
+.results_table_sorter {
+	margin-bottom: 3px;
+	max-width: {$?,{$MOBILE},315,400}px;
+	float: left;
+}
+
+.pagination_spacing {
+	margin: 1em 0;
+}
+
+.pagination {
+	float: {$?,{$MOBILE},{!en_left},{!en_right}};
+	padding: 0;
+	margin: 2px 0 0 0;
+/*	max-width: 540px; Looks bad on forumview */
+}
+
+.pagination * {
+	vertical-align: middle;
+}
+.pagination .inline {
+	display: inline-block;
+}
+
+.pagination a,
+.pagination span,
+.results_launcher a,
+.results_launcher span {
+	{+START,IF,{$NOT,{$MOBILE}}}
+		border: 1px solid {$GET,standard_border};
+	{+END}
+	{+START,IF,{$MOBILE}}
+		border: 2px solid {$GET,standard_border};
+	{+END}
+	background-color: {$GET,area_background};
+}
+.pagination a:hover, .results_launcher a:hover, .pagination a.button_depressed {
+	background-color: {$GET,area_hover_3_background} !important;
+}
+{+START,IF,{$NOT,{$MOBILE}}}
+	.pagination a,
+	.pagination span,
+	.results_launcher a,
+	.results_launcher span {
+		margin-{!en_left}: -1px;
+	}
+
+	.pagination a:first-child,
+	.pagination span:first-child,
+	.results_launcher a:first-child,
+	.results_launcher span:first-child {
+		margin-{!en_left}: 0 !important;
+	}
+{+END}
+
+.alphabetical_jumper {
+	float: none !important;
+	margin-left: -2px !important;
+	margin-bottom: 10px !important;
+	max-width: 100% !important;
+	padding: 3px;
+}
+
+.alphabetical_jumper.pagination a, .alphabetical_jumper.pagination a:hover {
+	padding: 2px 6px !important;
+}
+
+.results_continue, .results_page_num {
+	border-{!en_left}: 0;
+}
+
+.results_page_num {
+	font-weight: bold;
+}
+
+.pagination_per_page {
+	{+START,IF,{$NOT,{$MOBILE}}}
+		display: inline;
+		padding: 0 20px;
+	{+END}
+	{+START,IF,{$MOBILE}}
+		float: left;
+	{+END}
+}
+
+.pagination_pages {
+	display: inline;
+}
+
+.pagination a,
+.pagination a:visited,
+.pagination a:hover,
+.pagination span,
+.results_launcher a,
+.results_launcher a:visited,
+.results_launcher a:hover,
+.results_launcher span {
+	display: inline-block;
+	text-decoration: none;
+	margin-top: 0;
+	{+START,IF,{$NOT,{$MOBILE}}}
+		margin-{!en_left}: -1px;
+	{+END}
+}
+.pagination a:hover,
+.results_launcher a:hover {
+	background-color: {$GET,area_hover_2_background};
+}
+.pagination a,
+.pagination a:visited,
+.pagination a:hover,
+.pagination span,
+.results_launcher a,
+.results_launcher a:visited,
+.results_launcher a:hover,
+.results_launcher span {
+	padding: 2px {$?,{$MOBILE},10,4}px !important;
+}
+
+.results_launcher {
+	font-size: 0.8em;
+	display: inline;
+	padding-{!en_left}: 20px;
+}
+.results_launcher a,
+.results_launcher a:visited,
+.results_launcher a:hover,
+.results_launcher span {
+	padding: 0 3px;
+}
+
+.category_list {
+	margin: 0;
+	padding: 0 0 0 20px;
+	overflow: auto;
+}
+.category_list>li {
+	border-top: 2px solid {$GET,standard_border} !important;
+	padding: 0.5em 0;
+	margin: 0.5em 0;
+	clear: both;
+	overflow: hidden;
+}
+.category_list>li:first-child {
+	border-top: 0 !important;
+}
+.category_list>li.box { /* For a variety of combined box and category_list */
+	padding: 0 !important;
+}
+.category_list>li a img {
+	max-width: 150px;
+}
+.category_list>li+.category_list>li {
+	border-top: 1px solid {$GET,standard_border};
+}
+.category_list>li a {
+	font-size: 1.1em;
+}
+.category_list>li .associated_details {
+	margin-bottom: 0;
+}
+
+.category_sorter {
+}
+.category_sorter label {
+	font-weight: bold;
+}
+
+.index_screen_fancier_screen_pre {
+	margin-bottom: 1.5em;
+}
+.index_screen_fancier_screen_post {
+	margin-top: 1.5em;
+}
+
+{+START,IF,{$NOT,{$MOBILE}}}
+	.index_screen_fancier_screen_entries {
+		margin-{!en_left}: 1em;
+	}
+{+END}
+.index_screen_fancier_entry {
+	margin: 0.5em;
+	padding: 0.5em;
+}
+.index_screen_fancier_entry_link {
+	font-weight: bold;
+	margin-bottom: 0.3em;
+	padding: 0 0 0 18px;
+	background: url('{$IMG;,action_link}') 0 5px no-repeat;
+}
+.index_screen_fancier_entry_count {
+	font-size: 0.9em;
+	font-weight: normal;
+}
+.index_screen_fancier_entry_description {
+	font-size: 0.9em;
+	margin-{!en_left}: 18px; /* Due to action_link image */
+}
+
+.splurgh {
+	font-weight: bold;
+}
+.splurgh ul {
+	list-style: none;
+	margin-{!en_left}: 0;
+	padding-{!en_left}: 0;
+	font-size: 1.5em;
+}
+.splurgh li {
+	margin-{!en_left}: 0;
+	padding-{!en_left}: 0;
+}
+
+.splurgh ul ul {
+	list-style: circle;
+	font-size: 0.9em;
+	padding-top: 6px;
+}
+.splurgh li li {
+	margin-{!en_left}: 40px;
+	padding-{!en_left}: 0;
+}
+.splurgh ul ul ul {
+	font-size: 0.8em;
+}
+.splurgh ul ul ul ul {
+	font-size: 1em;
+}
+
+div.wysiwyg_toolbar_color_finder {
+	color: {$GET,area_background};
+}
+
+.fractional_edit {
+	margin: -3px;
+	border: 1px dashed {$GET,point_of_interest_border};
+	padding: 2px;
+	display: inline-block;
+}
+.fractional_edit, .fractional_edit_nonover {
+	display: inline-block;
+}
+
+.loading_box {
+	width: 10em;
+	display: inline-block;
+}
+.site_unloading {
+	{$BETA_CSS_PROPERTY,opacity: 0.2;}
+}
+
+.ajax_tree_list_loading {
+	padding: 2em;
+	text-align: center;
+}
+
+.ajax_tree_expand_icon {
+	width: 11px;
+	height: 11px;
+}
+
+.ajax_tree_cat_icon {
+	width: 14px;
+	height: 14px;
+}
+
+.ajax_tree_magic_button {
+	background-color: {$GET,native_ui_background};
+	color: {$GET,native_ui_foreground};
+	cursor: pointer;
+}
+
+.tree_list__root_tree_list {
+	padding-bottom: 0.5em;
+}
+.tree_list_highlighted a, .tree_list_nonhighlighted a {
+	background-color: {$GET,native_ui_background};
+	color: {$GET,native_ui_foreground};
+}
+.tree_list_highlighted a {
+	font-weight: bold;
+}
+.tree_list_nonhighlighted a {
+}
+
+.ocp_chat {
+	margin: 20px;
+	font-size: 0.9em;
+	float: right;
+	width: 260px;
+}
+.ocp_chat_iframe {
+	overflow: hidden;
+	width: 450px;
+	height: 90%;
+}
+
+/* Specific field types */
+
+.multilist_mark {
+	width: 1em;
+	display: inline-block;
+}
+.multilist_mark.yes {
+	color: {$GET,green_highlight_text};
+}
+.multilist_mark.no {
+	color: {$GET,red_highlight_text};
+}
+
+/*
+=========================
+========Feedback=========
+=========================
+*/
+
+{+START,IF,{$NOT,{$MOBILE}}}
+	.lined_up_boxes .right {
+		margin-left: 1em;
+	}
+
+	.lined_up_boxes .left {
+		margin-right: 1em;
+	}
+{+END}
+
+{+START,IF,{$MOBILE}}
+	.lined_up_boxes .right {
+		width: 100%;
+	}
+
+	.lined_up_boxes .left {
+		width: 100%;
+	}
+{+END}
+
+.ratings {
+	width: {$?,{$MOBILE},100%,10em};
+}
+
+.RATING_BOX .rating_inner {
+	text-align: center;
+}
+
+.RATING_INLINE_DYNAMIC, .RATING_INLINE_STATIC, .RATING_INLINE_DYNAMIC div, .RATING_INLINE_STATIC div, .RATING_INLINE_DYNAMIC form, .RATING_INLINE_STATIC form {
+	display: inline;
+}
+.RATING_INLINE_DYNAMIC .rating_outer, .RATING_INLINE_STATIC .rating_outer {
+	padding-left: 2em;
+}
+.RATING_INLINE_DYNAMIC .rating_outer:first-child, .RATING_INLINE_STATIC .rating_outer:first-child {
+	padding-left: 0;
+}
+
+.post_action_link .RATING_INLINE_DYNAMIC {
+	padding-left: 20px;
+}
+
+.rating_inner img {
+	cursor: pointer;
+}
+
+.rating_error {
+	text-align: center;
+}
+
+.rating_star {
+	{$BETA_CSS_PROPERTY,opacity: 0.2;} display: inline-block;/*Needed for IE8*/
+}
+.rating_star_highlight {
+	{$BETA_CSS_PROPERTY,opacity: 1.0;} display: inline-block;/*Needed for IE8*/
+}
+
+.trackbacks {
+	width: {$?,{$MOBILE},100%,14em};
+}
+
+.box___trackback label {
+	display: block;
+}
+
+.content_screen_comments .comments_wrapper {
+	margin-top: 2em;
+}
+
+.post .post_title {
+	font-weight: bold;
+	padding-left: 0;
+	margin-bottom: 0.3em;
+}
+
+.post .post_avatar {
+	float: left;
+	margin: 0.5em 1em 0.5em 0;
+	width: 50px;
+	height: 50px;
+}
+
+.post .post_subline {
+	margin: 1em 0;
+	font-size: 0.9em;
+}
+
+.post .post_poster {
+	font-weight: bold;
+}
+
+.post .post_time {
+	margin-left: 0.5em;
+}
+
+.post .post_action_link {
+}
+
+.post .post_thread_children {
+	margin-top: 1em;
+	{+START,IF,{$MOBILE}}
+		margin-left: 7px;
+	{+END}
+	{+START,IF,{$NOT,{$MOBILE}}}
+		margin-left: 20px;
+	{+END}
+}
+
+.post_buttons {
+	text-align: left !important; /* Overrides buttons_group */
+}
+.box .buttons_group {
+	margin-bottom: 0 !important;
+}
+
+.post .post_buttons {
+	margin-top: 1.3em;
+}
+
+.post_buttons a {
+	{$BETA_CSS_PROPERTY,opacity: 0.1;} display: inline-block;/*Needed for IE8*/
+	{$BETA_CSS_PROPERTY,transition-property : opacity;}
+	{$BETA_CSS_PROPERTY,transition-duration : 0.5s;}
+}
+
+.post_buttons a[rel="add reply"] {
+	{$BETA_CSS_PROPERTY,opacity: 1.0;} display: inline-block;/*Needed for IE8*/
+}
+
+.post_buttons:hover a, body.touch_enabled .post_buttons a {
+	{$BETA_CSS_PROPERTY,opacity: 1.0;} display: inline-block;/*Needed for IE8*/
+}
+
+.post_show_more {
+	text-align: center;
+	border: 1px solid {$GET,standard_border};
+	border-bottom-left-radius: 40px;
+	border-bottom-right-radius: 40px;
+	padding: 1em;
+	font-weight: bold;
+	font-size: 0.85em;
+}
+
+.post .post_show_more {
+	margin-left: 2em;
+}
+
+.comment_wrapper {
+	margin: 1em 0;
+}
+
+.comment_wrapper .highlighted_post {
+	background-color: {$GET,point_of_interest_background} !important;
+	padding: 1em !important;
+	border: 1px dotted {$GET,slightly_seeded_complement_text} !important;
+}
+.comments_wrapper .boxless_space .comment_wrapper .highlighted_post.box {
+	border-top: 1px dotted {$GET,slightly_seeded_complement_text} !important; /* Needs to be more explicit as boxless-space rules will remove borders */
+}
+
+.reviews_average {
+	font-size: 0.8em;
+	{$BETA_CSS_PROPERTY,opacity: 0.7;} display: inline-block;/*Needed for IE8*/
+}
+
+.comments_field_name_column {
+	width: 12em;
+}
+
+.comments_field_input_column {
+	width: 100%;
+}
+
+.comments_posting_form_inner {
+	text-align: {!en_left};
+	padding: 1em 0 0 0;
+	margin: 0 auto;
+	width: {$?,{$MOBILE},100%,525}px;
+	{+START,IF,{$MOBILE}}
+		overflow: hidden;
+	{+END}
+}
+
+.comments_posting_form_inner th {
+	font-weight: bold !important;
+	padding: 0.5em 1.5em 0.5em 0;
+	border-right: 1px solid {$GET,pale_border};
+	text-align: right;
+}
+.comments_posting_form_inner th * {
+	text-align: right !important;
+}
+
+.comments_posting_form_inner td {
+	padding-left: 1.5em;
+}
+
+.comments_posting_form_inner textarea {
+	color: {$GET,comfortable_input_field_text};
+}
+
+.comments_posting_form_inner table {
+	border-collapse: collapse;
+}
+
+.comments_posting_form_emoticons {
+	float: {!en_left};
+	width: 140px;
+	padding-{!en_right}: 5px;
+	text-align: center;
+	padding-top: 0.5em;
+}
+
+.comments_posting_form_emoticons p {
+	margin-bottom: 0;
+}
+
+.comments_posting_form_inner .associated_links_block_group {
+	font-size: 0.85em;
+	font-weight: normal;
+}
+
+.comments_posting_form_end {
+	overflow: hidden;
+	{+START,IF,{$MOBILE}}
+		margin: 0 2em 1em 0;
+		padding: 0;
+		text-align: center;
+	{+END}
+	{+START,IF,{$NOT,{$MOBILE}}}
+		margin: 0 0 1em 160px;
+	{+END}
+}
+
+.comments_posting_form_end .proceed_button {
+	margin-top: 1em;
+	text-align: center !important;
+}
+
+.comments_captcha {
+	width: 200px;
+	margin: 1em auto 0 auto;
+	font-size: 0.85em;
+	text-align: center;
+}
+
+.comments_captcha img, .comments_captcha iframe, .comments_captcha input {
+	margin: 0 5px 2px 5px;
+	vertical-align: middle;
+}
+
+{+START,IF,{$MOBILE}}
+	.comments_posting_form_end .proceed_button button {
+		float: none;
+	}
+{+END}
+
+.comments_posting_form_outer .attachments {
+	text-align: {!en_left};
+	margin: 1em;
+}
+
+/*
+=========================
+==========Lists==========
+=========================
+*/
+
+ul.compact_list, ol.compact_list {
+	margin: 0;
+	padding: 0;
+	text-align: left; /* In case cascading from somewhere */
+}
+ul.compact_list>li, ol.compact_list>li {
+	margin: 0 0 0 17px;
+	padding: 0;
+}
+.compact_list>li>p {
+	margin-top: 0;
+}
+
+dl.compact_list {
+	margin: 0.4em 0;
+	overflow: hidden;
+}
+dl.compact_list>dt {
+	display: list-item;
+	list-style-type: circle;
+	float: left;
+	margin: 0 0.5em 0 8px;
+	clear: both;
+}
+.global_side_panel .box dl.compact_list>dt {
+	margin-left: 0;
+}
+dl.compact_list>dt:after {
+	content: ":";
+}
+dl.compact_list>dd {
+	margin: 0;
+}
+
+ul.spaced_list, .spaced_list ul, ol.spaced_list, .spaced_list ol {
+	margin: 0;
+	padding: 0 !important;
+	list-style-type: square;
+}
+.spaced_list li {
+	margin: 0.5em 0 0.5em 25px !important;
+	padding: 0;
+}
+
+ul.tick_list, ul.tick_list li {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+ul.actions_list {
+	padding: 0;
+	margin: 0;
+}
+ul.actions_list>li {
+	padding: 1px 0 2px 18px;
+	background: url('{$IMG;,action_link}') left 5px no-repeat;
+}
+ul.actions_list_compact>li, ul.actions_list_super_compact>li {
+	padding: 0 0 0 18px;
+	background: url('{$IMG;,action_link}') left 2px no-repeat;
+}
+ul.actions_list>li, ul.actions_list_compact>li, ul.actions_list_super_compact>li {
+	margin: 0;
+	list-style-type: none;
+	list-style-image: none;
+}
+ul.actions_list h4 {
+	display: inline;
+	line-height: 2em;
+}
+
+ul.actions_list_compact, ul.actions_list_super_compact {
+	padding: 0;
+	margin: 0;
+}
+
+li.actions_list_strong {
+	font-weight: bold;
+}
+
+/*
+A note about display of meta data...
+
+It may be displayed using:
+ - meta_details_list (usually used on full screen views of content)
+ - horizontal_meta_details (usually used on blocks where the meta details are important to encourage a click through)
+ - a table (usually used where the content defines its own meta data beyond what all ocPortal content has, such as a length or resolution)
+ - a tooltip (good for tucking it away, although it's not touch friendly so should only be used if non-important)
+But it should always have role="contentinfo" on it (ARIA)
+*/
+
+ul.meta_details_list {
+	display: block;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+ul.meta_details_list>li {
+	padding: 0;
+	margin: 0.2em 0;
+}
+
+dl.meta_details_list>dt {
+	float: {!en_left};
+	padding-{!en_right}: 0.4em !important;
+}
+dl.meta_details_list>dt, dl.meta_details_list>dd {
+	margin: 0;
+	padding: 0.2em 0;
+}
+
+.meta_details>ul.meta_details_list>li {
+	margin: 0.5em 0;
+}
+.meta_details>dl.meta_details_list {
+	margin-bottom: 0;
+}
+
+/*
+=========================
+=Associations/Summaries==
+=========================
+*/
+
+.comcode_supported_icon {
+	vertical-align: middle;
+}
+
+.quick_self_edit_link {
+	font-size: 0.8em;
+	text-align: center;
+	border: 1px solid {$GET,pale_border};
+	{$BETA_CSS_PROPERTY,border-radius: 5px;}
+	padding: 0.5em;
+	{$BETA_CSS_PROPERTY,opacity: 0.4;}
+	{$BETA_CSS_PROPERTY,transition: opacity 0.6s linear;}
+	margin-top: 3em;
+}
+.quick_self_edit_link:hover {
+	{$BETA_CSS_PROPERTY,opacity: 1;}
+}
+#panel_top .quick_self_edit_link {
+	display: none;
+}
+
+.staff_actions {
+	margin-top: 2em;
+	font-size: 0.95em;
+	{$BETA_CSS_PROPERTY,opacity: 0.4;}
+	{$BETA_CSS_PROPERTY,transition: opacity 0.6s linear;}
+	background: url('{$IMG;,action}') right 3px no-repeat;
+	padding-right: 5px;
+	background-origin: content-box;
+}
+.staff_actions:hover, body.touch_enabled .staff_actions {
+	{$BETA_CSS_PROPERTY,opacity: 1;}
+}
+.staff_actions .box_inner {
+	padding-right: 25px;
+	margin-bottom: 0.54em; /* Fixes weird bug on Chrome where bottom border disappears when not hovered */
+}
+.staff_actions .field_name.standard_field_name {
+	display: none;
+}
+.staff_actions ul.horizontal_links {
+	width: auto;
+	font-size: 1em;
+}
+.staff_actions a {
+	white-space: nowrap !important;
+}
+
+.associated_details {
+	font-weight: normal; /* Undo what may be set on a surrounding element */
+}
+
+.associated_minor_button_action, .associated_details {
+	font-size: 0.9em;
+}
+
+.global_side_panel .associated_minor_button_action, .global_side_panel .associated_details, .associated_link {
+	font-size: 0.95em;
+}
+
+.associated_minor_button_overlayed {
+	position: absolute;
+}
+
+div.associated_details {
+	margin: 1em 0;
+}
+
+.associated_breadcrumbs {
+	font-size: 0.85em;
+	color: {$GET,a.link};
+}
+
+/*
+a.associated_link / form.associated_link / span.associated_link - a single associated link displayed inline, with CSS-generated brackets around
+p.associated_link / div.associated_link - a single associated link displayed in a block, with CSS-generated brackets around
+ul.associated_links_block_group - a group of associated links displayed in a block, each link on its own line with its own CSS-generated brackets around
+ul.horizontal_links / ul.horizontal_links_comma - a group of associated links displayed in a block, the links on the same line with a CSS-generated separation character; often used to represent block actions; often used in conjunction with associated_links_block_group to get the CSS-generated brackets
+.horizontal_meta_details / .horizontal_buttons / .horizontal_ticker - Additional horizontal list types for things other than links
+.buttons_group - used for a button set, like horizontal_links but for centred buttons
+
+There is 'actions_list' too (defined elsewhere). These are for links that are given more focus as key navigation mechanisms in a task-based UI.
+*/
+
+ul.associated_links_block_group.horizontal_links>li:first-child:before, p.associated_link:before, div.associated_link:before {
+	content: "( " !important;
+	{$BETA_CSS_PROPERTY,opacity: 0.7;}
+	font-size: 0.8em;
+}
+ul.associated_links_block_group.horizontal_links>li:last-child:after, p.associated_link:after, div.associated_link:after {
+	content: " )" !important;
+	{$BETA_CSS_PROPERTY,opacity: 0.7;}
+	font-size: 0.8em;
+}
+span.associated_link, a.associated_link, form.associated_link {
+	white-space: nowrap;
+}
+ul.associated_links_block_group>li:before, span.associated_link:before, a.associated_link:before, form.associated_link:before {
+	content: "(" !important;
+	{$BETA_CSS_PROPERTY,opacity: 0.7;}
+}
+ul.associated_links_block_group.horizontal_links>li:after { /* Undoes the above rules for if 'horizontal_links' is set (the rule further up will run instead and the middot one below) */
+	content: "" !important;
+}
+ul.associated_links_block_group>li:after, span.associated_link:after, a.associated_link:after, form.associated_link:after {
+	content: ")" !important;
+	{$BETA_CSS_PROPERTY,opacity: 0.7;}
+}
+
+ul.associated_links_block_group.horizontal_links>li:before,
+.horizontal_links>li:before,
+.horizontal_meta_details li:before,
+.horizontal_ticker li:before {
+	content: "\00b7" !important; /* a &middot; */
+	padding: 0 0.5em 0 0.1em;
+	vertical-align: middle;
+}
+.horizontal_buttons li {
+	padding-left: 3px !important;
+}
+.horizontal_buttons li:first-child {
+	/* Undoes the li padding defined above */
+	padding-left: 0 !important;
+}
+.horizontal_links_comma li:before {
+	content: ", \A";
+}
+.horizontal_meta_details li:first-child:before,
+.horizontal_links li:first-child:before,
+.horizontal_buttons li:first-child:before,
+.horizontal_ticker li:first-child:before,
+.horizontal_links_comma li:first-child:before {
+	/* Undoes the middot/comma separator */
+	content: "" !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+ul.associated_link, ul.horizontal_meta_details, ul.horizontal_links, ul.horizontal_links_comma, ul.horizontal_buttons, .horizontal_ticker {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.horizontal_buttons {
+	list-style: none;
+}
+ul.horizontal_links_comma {
+	vertical-align: baseline !important;
+	width: auto !important;
+}
+ul.associated_link {
+	display: block;
+}
+ul.horizontal_meta_details, ul.horizontal_links, ul.horizontal_links_comma, ul.horizontal_buttons, .horizontal_ticker {
+	/* As these go across horizontally, we need to do this to allow centering to work for the group */
+	display: inline-block !important;
+	width: 100%;
+}
+ul.associated_link>li, .horizontal_meta_details>li, .horizontal_links>li, ul.horizontal_links_comma>li, .horizontal_buttons>li, .horizontal_ticker>li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+ul.associated_link>li {
+	display: block !important; /* Undoes "display: inline" above */
+}
+
+.associated_links_block_group>li{
+	margin: 0.5em 0 !important;
+	white-space: nowrap; /* To force breaking between links */
+}
+.global_side_panel .associated_links_block_group>li {
+	white-space: normal;
+}
+.buttons_group, .associated_links_block_group {
+	text-align: center;
+	padding: 0;
+	margin: 2em 0;
+	display: block;
+	list-style: none;
+}
+.horizontal_links, .associated_link {
+	font-size: 0.9em;
+}
+ul.buttons_group, ul.associated_links_block_group {
+	margin: 0; /* Margin will go on li elements if its a list */
+}
+table+ul.associated_links_block_group, .wide_table_wrap+ul.associated_links_block_group { /* In this case no margin is coming from above so we must define one */
+	margin-top: 1em !important;
+}
+.force_margin {
+	margin-top: 1.5em !important;
+}
+.buttons_group>* {
+	margin-left: 5px !important;
+}
+.buttons_group>*:first-child {
+	margin-left: 0 !important;
+}
+
+.associated_link.suggested {
+	font-weight: bold;
+}
+
+.alt_field:before {
+	content: "\00bb"; /* raquo */
+}
+.related_field:before {
+	content: "\203a"; /* rsaquo */
+	font-size: 1.2em;
+}
+.alt_field:before, .related_field:before {
+	padding-left: 1em;
+	padding-right: 0.2em;
+}
+
+/*
+=========================
+=======Misc Forms========
+=========================
+*/
+
+.field_input_non_filled {
+	color: {$GET,unfilled_input_text} !important;
+}
+.field_input_filled {
+	color: {$GET,native_ui_foreground};
+}
+
+.locked_input_field {
+	color: {$GET,locked_input_field};
+}
+
+.native_ui_foreground {
+	color: {$GET,native_ui_foreground};
+}
+
+.native_ui_selected {
+	color: {$GET,native_ui_selected_foreground};
+	background-color: {$GET,native_ui_selected_background};
+}
+
+.simple_neat_checkbox {
+	overflow: hidden;
+}
+.simple_neat_checkbox input {
+	float: {!en_left};
+}
+.simple_neat_checkbox span {
+	float: {!en_right};
+	margin-{!en_left}: 2em;
+	margin-top: -1.5em;
+}
+
+.captcha_frame {
+	width: 100px;
+	height: 52px;
+}
+
+.captcha {
+	font-size: 0.8em;
+	margin-bottom: 3px;
+}
+
+.captcha a {
+	float: {!en_right};
+	margin: 10px 0 0 5px;
+}
+
+.quite_wide_field {
+	width: 88%;
+}
+
+.wide_field, .wide_button {
+	width: 100%;
+	{$BETA_CSS_PROPERTY,box-sizing: border-box;}
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
+
+input[type="reset"].wide_button, input[type="reset"].button_micro, input[type="reset"].button_page, input[type="reset"].button_pageitem,
+input[type="submit"].wide_button, input[type="submit"].button_micro, input[type="submit"].button_page, input[type="submit"].button_pageitem,
+input[type="button"].wide_button, input[type="button"].button_micro, input[type="button"].button_page, input[type="button"].button_pageitem,
+button.wide_button, button.button_micro, button.button_page, button.button_pageitem, .hero_section .hero_button a
+{
+	display: inline-block;
+	border: none;
+	cursor: pointer;
+	border: 1px solid {$GET,dark_border};
+	background-color: {$GET,lgrad};
+	color: {$GET,box_title_text};
+	{$BETA_CSS_PROPERTY,border-radius: 6px;}
+	background-image: url('{$IMG;,gradient}');
+	text-shadow: 1px 1px 1px {$GET,dark_shadow};
+	margin: 0 2px;
+	-webkit-appearance: none;
+}
+.button_micro {
+	background-image: none !important; /* Too loud for such a small space */
+}
+
+/* This is used to overlay special out-of-flow edit buttons, for staff only */
+.magic_image_edit_link {
+	font-size: 15px;
+	border: 1px solid {$GET,light_error_border} !important;
+	background-color: {$GET,light_error_background} !important;
+	color: {$GET,slightly_seeded_text} !important;
+}
+
+.button_pageitem_tall {
+	background-image: none !important;
+}
+
+input[type="reset"].button_micro, input[type="submit"].button_micro, input[type="button"].button_micro, button.button_micro
+{
+	padding: 0 3px 1px 3px !important;
+}
+input[type="reset"].wide_button, input[type="submit"].wide_button, input[type="button"].wide_button, button.wide_button, input[type="submit"].button_pageitem, input[type="button"].button_pageitem, button.button_pageitem
+{
+	padding: 2px 4px 3px 4px !important;
+}
+input[type="reset"].button_page, input[type="submit"].button_page, input[type="button"].button_page, button.button_page
+{
+	padding: 3px 5px 4px 5px !important;
+	min-width: {$?,{$MOBILE},5.8,9.8}em;
+}
+input[type="reset"].wide_button:hover, input[type="reset"].button_micro:hover, input[type="reset"].button_page:hover, input[type="reset"].button_pageitem:hover,
+input[type="submit"].wide_button:hover, input[type="submit"].button_micro:hover, input[type="submit"].button_page:hover, input[type="submit"].button_pageitem:hover,
+input[type="button"].wide_button:hover, input[type="button"].button_micro:hover, input[type="button"].button_page:hover, input[type="button"].button_pageitem:hover,
+button.wide_button:hover, button.button_micro:hover, button.button_page:hover, button.button_pageitem:hover
+{
+	{$BETA_CSS_PROPERTY,opacity: 1.0;}
+}
+input[type="reset"].wide_button:disabled, input[type="reset"].button_micro:disabled, input[type="reset"].button_page:disabled, input[type="reset"].button_pageitem:disabled,
+input[type="submit"].wide_button:disabled, input[type="submit"].button_micro:disabled, input[type="submit"].button_page:disabled, input[type="submit"].button_pageitem:disabled,
+input[type="button"].wide_button:disabled, input[type="button"].button_micro:disabled, input[type="button"].button_page:disabled, input[type="button"].button_pageitem:disabled,
+button.wide_button:disabled, button.button_micro:disabled, button.button_page:disabled, button.button_pageitem:disabled
+{
+	{$BETA_CSS_PROPERTY,opacity: 0.4 !important;}
+	cursor: default;
+}
+
+.button_page, .button_pageitem, .button_micro, .wide_button, .toggleable_tray_button img {
+	{$BETA_CSS_PROPERTY,opacity: 0.85;}
+	display: inline-block;
+}
+
+.button_page:hover, .button_pageitem:hover, .button_micro:hover, .wide_button:hover, .toggleable_tray_button:hover img,
+body.touch_enabled .button_page, body.touch_enabled .button_pageitem, body.touch_enabled .button_micro, body.touch_enabled .wide_button, body.touch_enabled .toggleable_tray_button img {
+	{$BETA_CSS_PROPERTY,opacity: 1.0;} /* Needed for Opera */
+}
+
+.button_page, .button_pageitem {
+	vertical-align: middle;
+	{+START,IF,{$MOBILE}}
+		margin-bottom: 5px;
+	{+END}
+}
+
+.proceed_button {
+	text-align: center;
+}
+div.proceed_button_left {
+	text-align: {!en_left};
+}
+div.proceed_button_left_2 {
+	text-align: {!en_left};
+	margin-{!en_left}: -2em;
+}
+
+.shunted_button {
+	text-align: {!en_right};
+}
+
+.innocuous_fieldset {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	min-width: 0; /* Works around webkit bug, where it breaks max-width:100% inside because the size calculation has been inverted by the default "min-width: -webkit-min-content;" rule  */
+}
+
+/*
+Form buttons are wrapped in either:
+ - .shunted_button
+ - .proceed_button
+ - .mini_proceed_button
+ - .buttons_group (defined elsewhere, in "Associations/Summaries")
+*/
+
+/*
+=========================
+====Frame Interfaces=====
+=========================
+*/
+
+.dynamic_iframe {
+	width: 100%;
+	height: 900px; /* This is dynamically resized; 900px is referenced from JAVASCRIPT.tpl so don't change it */
+}
+
+.expandable_iframe {
+	width: 100%;
+	height: 150px; /* Referenced also in JAVASCRIPT.tpl */
+}
+
+.hidden_save_frame, .hidden_preview_frame {
+	width: 100%;
+	height: 0;
+	float: left; /* Stops it breaking up margin collapsing */
+}
+
+/*
+=========================
+=======Carousels=========
+=========================
+*/
+
+.carousel {
+	overflow: hidden;
+	white-space: nowrap;
+	position: relative;
+}
+
+.carousel .img_thumb {
+	max-width: 140px;
+}
+
+.carousel .move_left, .carousel .move_right {
+	min-height: 16px;
+	width: 17px;
+}
+
+.carousel .move_left {
+	margin-right: 20px;
+	padding-right: 5px;
+	float: left;
+	background: url('{$IMG;,carousel/button_left}') left center no-repeat;
+	border-right: 1px dotted {$GET,standard_border};
+}
+
+.carousel .move_left:hover {
+	background-image: url('{$IMG;,carousel/button_left_hover}');
+}
+
+.carousel .move_right {
+	margin-left: 20px;
+	padding-left: 5px;
+	float: right;
+	background: url('{$IMG;,carousel/button_right}') right center no-repeat;
+	border-left: 1px dotted {$GET,standard_border};
+}
+
+.carousel .move_right:hover {
+	background-image: url('{$IMG;,carousel/button_right_hover}');
+}
+
+.carousel .main {
+	overflow: hidden;
+}
+
+/*
+=========================
+===========Tabs==========
+=========================
+*/
+
+.tab_surround {
+	border-left: 1px solid;
+	border-right: 1px solid;
+	border-bottom: 1px solid;
+	border-color: {$GET,tab_border};
+	{$BETA_CSS_PROPERTY,border-bottom-left-radius: 10px;}
+	{$BETA_CSS_PROPERTY,border-bottom-right-radius: 10px;}
+	padding: 0.5em;
+	{$BETA_CSS_PROPERTY,background-image: linear-gradient(to bottom\, {$GET,main_2_background}\, {$GET,main_background});}
+}
+
+/* Tighten up subtab display */
+.tab_surround .tab_surround {
+	background-image: none;
+	background-color: {$GET,main_background};
+	overflow: hidden; /* To stop margin collapsing bleeding backgrounds */
+}
+.tab_surround .tab_surround .form_table {
+	margin: 0;
+}
+
+.tabs {
+	border-left: 0;
+	border-right: 0;
+	border-top: 0;
+	border-bottom: 1px solid;
+	border-color: {$GET,tab_border};
+	height: 22px;
+}
+
+a.tab, a.tab:visited, a.tab:hover {
+	text-decoration: none;
+}
+
+.tab {
+	float: left;
+	background-image: url('{$IMG;,tab}') !important;
+	padding: 3px 7px 0 7px !important;
+	height: 20px;
+	text-align: center;
+	cursor: pointer;
+	{$BETA_CSS_PROPERTY,opacity: 0.6;}
+}
+
+.tab, .tab:hover {
+	color: {$GET,a.link};
+}
+
+.tab_active {
+	text-shadow: 1px 1px 1px {$GET,standard_border};
+	{$BETA_CSS_PROPERTY,opacity: 1 !important;}
+}
+
+.tab:hover {
+	text-decoration: underline !important;
+}
+
+.tab strong {
+	font-weight: normal;
+	font-style: italic;
+}
+
+.tab_first {
+}
+
+.tab_last {
+	border-right: 1px solid;
+	border-color: {$GET,tab_border};
+}
+
+.tab_surround .tab { /* subtabs */
+	padding-top: 5px !important;
+	height: 18px;
+	font-size: 0.88em;
+}
+
+/*
+=========================
+==========Menus==========
+=========================
+*/
+
+ul.nl, .nl ul {
+	display: block;
+	margin: 0;
+	padding-{!en_left}: 0;
+}
+
+.nl ul>li, ul.nl>li {
+	display: block;
+	margin-{!en_left}: 0;
+	padding-{!en_left}: 0;
+	list-style-type: none;
+	list-style-image: none;
+}
+
+.menu_type__tree .has_no_img .drawer {
+	background: url('{$IMG;,menus/menu_bullet_expand}') no-repeat 0 5px !important;
+}
+
+.menu_type__tree .has_no_img .drawer:hover {
+	background: url('{$IMG;,menus/menu_bullet_expand_hover}') no-repeat 0 5px !important;
+}
+
+.has_img a {
+	background: none !important;
+	padding-{!en_left}: 0 !important;
+}
+
+.has_img {
+	padding-{!en_left}: 25px !important;
+}
+
+.has_img img {
+	vertical-align: bottom;
+}
+
+.menu_type__dropdown .nlevel .has_img img, .menu_type__popup .has_img img {
+	width: 20px;
+}
+
+.menu_type__tree ul li a, .menu_type__popup ul li a, .menu_type__dropdown ul.nlevel li a { /* ul li added to ensure precedence over ".nl li" selector, whilst not forcing us to use up our only !important */
+	padding-{!en_left}: 14px;
+}
+.menu_type__tree ul li a, .menu_type__popup ul li a {
+	display: inline-block; /* This says that we want to encourage greedy space consumption rather than wrapping */
+	padding-{!en_left}: 14px;
+}
+
+.menu_type__tree .current a, .menu_type__popup .current a, .menu_type__dropdown .nlevel .current a {
+	background: transparent url('{$IMG;,menus/menu_bullet_current}') no-repeat 5px 6px !important;
+}
+
+.menu_type__popup .has_img.current a, .menu_type__dropdown .nlevel .has_img.current a {
+	background: none !important;
+}
+
+.menu_type__tree .non_current a, .menu_type__popup .non_current a, .menu_type__dropdown .nlevel .non_current a {
+	background: transparent url('{$IMG;,menus/menu_bullet}') no-repeat 5px 6px;
+}
+
+.menu_type__tree .non_current a:hover, .menu_type__popup .non_current a:hover, .menu_type__dropdown .nlevel .non_current a:hover {
+	background: transparent url('{$IMG;,menus/menu_bullet_hover}') no-repeat 5px 6px;
+}
+
+.menu_type__select li, .menu_type__dropdown .nlevel li {
+	padding: 3px 5px !important;
+}
+
+.menu_type__tree li, .menu_type__popup li {
+	padding: 3px 5px 3px 0 !important;
+}
+
+.menu_type__popup .nlevel li, .menu_type__dropdown .nlevel li {
+	white-space: nowrap;
+}
+
+.menu_type__popup {
+	min-width: 15em;
+	max-width: 30em; /* Really this is just to make the screen preview work! Normally a panel would constrain the width. */
+}
+.box .menu_type__popup {
+	min-width: 0;
+}
+
+.menu_type__dropdown ul.nlevel, .menu_type__popup ul {
+	line-height: 1.4em;
+	border-top: 1px solid {$GET,standard_border};
+	border-left: 1px solid {$GET,standard_border};
+	border-right: 1px solid {$GET,standard_border};
+}
+
+.menu_type__dropdown ul.nlevel {
+	{$BETA_CSS_PROPERTY,box-shadow: 3px 3px 10px {$GET,standard_border};}
+}
+
+.menu_type__popup .menu_spacer, .menu_type__popup li, .menu_type__dropdown .nlevel li, .menu_type__dropdown .nlevel .menu_spacer {
+	border-bottom: 1px solid {$GET,standard_border};
+}
+
+.menu_type__popup .menu_spacer, .menu_type__popup li {
+	background-color: {$GET,area_background} !important;
+}
+
+.menu_type__popup li a, .menu_type__popup li a:visited {
+	color: {$GET,a.link};
+}
+.menu_type__popup li a:hover {
+	color: {$GET,a.hover} !important;
+}
+
+.menu_type__popup ul ul {
+	margin-top: -1px;
+}
+
+.menu_type__popup a, .menu_type__popup a:visited, .menu_type__dropdown .nlevel a, .menu_type__dropdown .nlevel a:visited {
+	text-decoration: none;
+}
+
+.menu_type__popup a:hover, .menu_type__dropdown .nlevel a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.menu_type__dropdown .nlevel li, .menu_type__dropdown .nlevel .menu_spacer {
+	background-color: {$GET,dropdown_menu_background};
+	font-weight: normal;
+
+	/* We do want wrapping for this, as menu labels could be longer than the available space between the start of the dropdown label and the edge of the fixed width */
+	max-width: 15em;
+	white-space: normal;
+}
+
+.menu_type__dropdown .nlevel li:hover {
+	background-color: {$GET,dropdown_menu_text};
+}
+
+.menu_type__dropdown .nlevel .menu_spacer {
+	display: block;
+	padding-{!en_right}: 0;
+}
+
+.menu_type__dropdown .nlevel, .menu_type__dropdown .nlevel a, .menu_type__dropdown .nlevel a:visited, .menu_type__dropdown .nlevel a:hover {
+	color: {$GET,slightly_seeded_text} !important;
+}
+
+/* Embossed menus should be flush to their box */
+.box___block_side_stored_menu_embossed>.box_inner>h3 {
+	margin: 0;
+	padding-left: 0;
+	padding-right: 0;
+}
+.box___block_side_stored_menu_embossed>.box_inner {
+	margin: 0;
+	position: relative;
+}
+.box___block_side_stored_menu_embossed .edit_menu_link_inline {
+	position: absolute;
+	right: 0;
+	bottom: 1px;
+}
+.box___block_side_stored_menu_embossed nav, .box___block_side_stored_menu_embossed li {
+	border-left: 0;
+	border-right: 0;
+}
+.box___block_side_stored_menu_embossed nav, .box___block_side_stored_menu_embossed li:last-child {
+	{$BETA_CSS_PROPERTY,border-bottom-left-radius: 5px;}
+	{$BETA_CSS_PROPERTY,border-bottom-right-radius: 5px;}
+	border-bottom: 0;
+}
+
+.menu_type__embossed, .menu_type__top, .menu_type__dropdown {
+	overflow: hidden;
+}
+
+.menu_type__embossed, .menu_type__top, .menu_type__dropdown, .menu_type__embossed li, .menu_type__top li, .menu_type__dropdown li.toplevel {
+	background-color: {$GET,area_background};
+}
+
+.menu_type__embossed .current, .menu_type__top .current, .menu_type__dropdown .toplevel.current {
+	color: {$GET,slightly_seeded_text};
+	background-color: {$GET,area_highlight_left_complement_background} !important;
+	font-weight: bold;
+}
+
+.menu_type__embossed a, .menu_type__embossed a:visited, .menu_type__embossed a:hover, .menu_type__top a, .menu_type__top a:visited, .menu_type__top a:hover {
+	text-decoration: none;
+}
+
+.menu_type__embossed a:hover, .menu_type__top a:hover, .menu_type__dropdown a.toplevel_link:hover {
+	background-color: {$GET,area_highlight_right_complement_background} !important;
+	{$BETA_CSS_PROPERTY,transition: color\,background-color 0.5s linear;}
+}
+
+.menu_type__top a, .menu_type__dropdown a.toplevel_link {
+	padding: 0.5em 0.5em 0.6em 0.5em !important;
+}
+
+.menu_type__embossed a {
+	padding: 0.7em 0.7em 0.5em 0.7em !important;
+}
+
+.menu_type__embossed a, .menu_type__top a, .menu_type__dropdown a.toplevel_link {
+	display: block;
+	outline: 0;
+}
+
+.menu_type__top a, .menu_type__dropdown a.toplevel_link {
+	font-size: 0.9em;
+}
+
+{+START,IF,{$NEQ,{$LANG},EN}}
+	/* This is fairly arbitrary, but non-EN languages often have longer words, so we will use smaller text to fit */
+	.menu_type__embossed a, .menu_type__top a, .menu_type__dropdown a.toplevel_link {
+		font-size: 0.85em;
+	}
+{+END}
+
+.menu_type__embossed {
+	border-left: 1px solid {$GET,standard_border};
+	border-right: 1px solid {$GET,standard_border};
+	border-bottom: 1px solid {$GET,standard_border};
+}
+
+.menu_type__embossed li {
+	border-top: 1px solid {$GET,standard_border};
+}
+
+.menu_type__embossed img {
+	vertical-align: middle;
+	margin-right: 3px;
+}
+
+.menu_type__top, .menu_type__dropdown {
+	/* Invisible borders to stop margin collapsing */
+	border-top: 1px solid {$GET,standard_border};
+	border-bottom: 1px solid {$GET,standard_border};
+}
+
+.menu_type__top li, .menu_type__dropdown li.toplevel {
+	float: {!en_left};
+	border-{!en_left}: 1px solid {$GET,standard_border};
+	margin-{!en_right}: -1px;
+	margin-bottom: 0;
+	{+START,IF,{$MOBILE}}
+		font-size: 0.9em;
+	{+END}
+	{$BETA_CSS_PROPERTY,transition: color\,background-color 0.5s linear;}
+}
+
+.menu_type__top li.last, .menu_type__dropdown li.toplevel.last {
+	float: none !important; /* so it eats all space remaining */
+	overflow: hidden; /* so it is shunted against it's left-hand neighbours without overlapping */
+	margin-{!en_right}: 0 !important; /* as would cause wrapping with the overflow hidden */
+	position: relative; {!en_left}: -1px; /* In place of margin-right */
+	border-left: 0;
+}
+
+.menu_type__top li.first, .menu_type__dropdown li.toplevel.first {
+	border-left: 0;
+}
+
+.menu_type__top li.last a, .menu_type__dropdown li.toplevel.last a {
+	border-left: 1px solid {$GET,standard_border};
+}
+
+.menu_type__top img, .menu_type__dropdown .toplevel_link img {
+	max-width: 17px;
+	margin-top: -2px;
+}
+
+.menu_type__top img, .menu_type__dropdown img {
+	float: {!en_left};
+	padding: 0 8px 0 3px;
+}
+
+.menu_type__top .menu_spacer, .menu_type__dropdown li.toplevel.menu_spacer {
+	height: 1.15em;
+	width: 4em;
+	padding: 4px;
+	float: {!en_left};
+}
+
+.menu_type__tree ul, .menu_type__select ul {
+	margin: 2px 0 0 0 !important;
+}
+
+.menu_type__tree ul ul {
+	padding-{!en_left}: 5px;
+}
+
+.menu_type__zone ul {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	{+START,IF,{$MOBILE}}
+		overflow:hidden;
+		height:auto;
+		text-align:center;
+	{+END}
+}
+
+{+START,IF,{$NEQ,{$LANG},EN}}
+	/* This is fairly arbitrary, but non-EN languages often have longer words, so we will use smaller text to fit */
+	.menu_type__zone ul {
+		font-size: 0.85em;
+	}
+{+END}
+
+.menu_type__zone li {
+	display: inline;
+	padding: 0;
+	list-style-type: none;
+	list-style-image: none;
+}
+
+/* Give Admin Zones special icon */
+.menu_type__zone li a[href*="/cms/"], .menu_type__zone li a[href*="/adminzone/"] {
+	padding-right: 17px;
+	background: url('{$IMG;,action_small}') right top no-repeat;
+}
+
+.menu_type__zone li * {
+	vertical-align: middle;
+}
+
+.global_navigation .menu_type__zone a, .global_navigation .menu_type__zone a:visited {
+	color: {$GET,global_navigation_text};
+}
+
+.menu_type__zone a, .menu_type__zone a:visited {
+	margin-{!en_right}: 1px;
+	text-decoration: none;
+}
+
+.global_navigation .menu_type__zone a:hover {
+	color: {$GET,global_navigation_hover};
+}
+
+.menu_type__zone a {
+	border-bottom: 1px solid transparent;
+	white-space: nowrap !important;
+	{$BETA_CSS_PROPERTY,transition: border-bottom-color 0.5s linear;}
+}
+
+.menu_type__zone a:hover {
+	text-decoration: none;
+	border-bottom: 1px dashed;
+}
+
+.menu_type__zone a:hover {
+	text-shadow: 0 0 10px {$GET,zone_jump_out_1_shadow};
+}
+.menu_type__zone li a[href*="adminzone"]:hover {
+	text-shadow: 0 0 10px {$GET,zone_jump_out_2_shadow};
+}
+
+.menu_type__zone .current {
+	border-bottom: 1px dashed;
+	border-bottom-color: {$GET,global_navigation_underline_current};
+}
+
+.menu_type__zone .current:hover {
+	border-bottom: 1px dashed;
+	border-bottom-color: {$GET,global_navigation_hover};
+}
+
+.menu_type__zone li:before, .menu_type__zone .divider {
+	/*content: "\221E";*/ /* Swanky-looking infinity symbol */
+	content: "\00A0"; /* an nbsp */
+	vertical-align: middle;
+	color: {$GET,pale_border};
+	font-size: 0.8em;
+	{$BETA_CSS_PROPERTY,opacity: 0.5;}
+	padding: 0 7px;
+}
+.menu_type__zone li:first-child:before {
+	content: "";
+}
+
+/* We hide the inline edit menu links for design reasons, they fade in on top of stuff when hovering the menu */
+.edit_menu_link_inline, .edit_page_link_inline {
+	{$BETA_CSS_PROPERTY,opacity: 0 !important;} display: inline-block;/*Needed for IE8*/
+	{$BETA_CSS_PROPERTY,transition: opacity 0.5s linear;}
+}
+div:hover>.edit_menu_link_inline, div:hover>.edit_page_link_inline {
+	{$BETA_CSS_PROPERTY,opacity: 1.0 !important;} display: inline-block;/*Needed for IE8*/
+}
+.edit_page_link_inline, .edit_menu_link_inline {
+	position: absolute;
+	right: 1px;
+	z-index: 10000;
+	margin-top: 3px;
+}
+.edit_page_link_inline {
+	margin-top: -1em;
+}
+
+/*
+=========================
+=========Comcode=========
+=========================
+*/
+
+.comcode_snapback {
+	text-align: {!en_right};
+	font-size: 0.75em;
+}
+
+.comcode_overlay_main {
+	margin-bottom: 3em;
+}
+
+.comcode_overlay_dismiss {
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	width: 90%;
+}
+
+.comcode_code_wrap {
+	overflow-x: auto;
+}
+
+/* .comcode_quote is used where the [quote] tag is parsed. */
+/* .comcode_code is used where the [code] tag is parsed. */
+.comcode_quote, .comcode_code {
+	margin: 15px;
+
+	/* To prevent horizontal overlapping with floats */
+	outline: 0;
+	overflow: auto;
+}
+
+.comcode_quote>h4, .comcode_code>h4 {
+	border: 1px solid {$GET,code_border};
+	padding: 4px;
+	margin-bottom: 0;
+	background: {$GET,code_title_background} url('{$IMG;,quote_gradient}') repeat-y;
+}
+
+.comcode_quote_inner, .comcode_code_inner {
+	border: 1px solid {$GET,code_border};
+	display: block;
+	padding: 5px;
+	margin-{!en_left}: 8px;
+	background-color: {$GET,code_background};
+	color: {$GET,code_text};
+	overflow: hidden;
+}
+
+.comcode_quote_inner_titled {
+	border-top: 0;
+}
+
+.comcode_code_inner {
+	font-family: 'Courier New', 'Courier', monospace;
+	font-size: 1.1em;
+	border-top: 0;
+	white-space: nowrap;
+	overflow: auto;
+}
+
+.comcode_code_scroll {
+	max-height: 300px;
+}
+
+.comcode_highlight {
+	font-weight: bold;
+	color: {$GET,red_highlight_text};
+	background-color: {$GET,yellow_highlight_background};
+}
+
+.wiki_link, .comcode_exp_ref {
+	color: {$GET,area_key_text};
+	font-size: 0.85em;
+}
+
+.comcode_exp_ref a {
+	background-image: url('{$IMG;,arrow_box}') !important;
+}
+
+.wiki_link a {
+	background-image: url('{$IMG;,wiki_link}') !important;
+}
+
+.comcode_exp_ref a, .wiki_link a {
+	padding-{!en_right}: 17px !important;
+	background-repeat: no-repeat !important;
+	background-position: 100% 30% !important;
+}
+
+.comcode_exp_ref a:hover {
+	background-image: url('{$IMG;,arrow_box_hover}') !important;
+}
+
+.wiki_link a:hover {
+	background-image: url('{$IMG;,wiki_link_hover}') !important;
+}
+
+.comcode_exp_ref a:hover, .wiki_link a:hover {
+	padding-{!en_right}: 17px !important;
+	background-repeat: no-repeat !important;
+	background-position: 100% 30% !important;
+}
+
+.comcode_exp_thumb {
+	width: 150px;
+	padding: 0.5em;
+}
+
+.comcode_exp_thumb p {
+	color: {$GET,area_text};
+	font-size: 0.85em;
+	margin: 0.5em;
+}
+
+.comcode_exp_thumb img {
+	margin: 1px;
+}
+
+.comcode_concept_inline, a.comcode_concept_inline, a.comcode_concept_inline:visited, a.comcode_concept_inline:hover {
+	border-bottom: 1px dashed {$GET,divider_line};
+	display: inline-block;
+}
+
+.comcode_concepts {
+	font-size: 0.85em;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.comcode_concepts_title {
+	background-image: url('{$IMG;,checklist/checklist1}');
+	background-repeat: no-repeat;
+	background-position: 1px 0;
+	vertical-align: top;
+	text-indent: 14px;
+	margin: 0;
+}
+
+.comcode_concepts_content {
+	padding-bottom: 0.85em;
+}
+
+.comcode_table_of_contents {
+	display: inline-block;
+	white-space: nowrap;
+	font-size: 0.9em;
+}
+
+.search_result .comcode_table_of_contents {
+	display: none;
+}
+
+.comcode_table_of_contents ol {
+	list-style-position: inside;
+	padding-{!en_left}: 12px !important;
+	margin: 0 !important;
+}
+.comcode_table_of_contents li {
+	margin: 0.2em 0 !important;
+	padding: 0 !important;
+}
+
+.comcode_table_of_contents a {
+	margin: 0;
+}
+
+.comcode_table_of_contents_title {
+	text-align: center;
+	color: {$GET,area_key_text};
+	margin: 0.5em;
+	font-weight: bold;
+}
+
+.comcode_italic {
+	font-style: italic;
+}
+
+.comcode_bold {
+	font-weight: bold;
+}
+
+.comcode_underline {
+	text-decoration: underline;
+}
+
+.comcode_strike {
+	text-decoration: line-through;
+}
+
+.comcode_section_controller {
+	padding-top: 10px;
+	margin-bottom: 20px;
+}
+
+.ticker_wrap {
+	display: inline-block;
+}
+.ticker {
+	margin: 0 auto;
+	height: 1.5em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-align: left;
+	display: inline-block;
+}
+
+.shocker {
+	text-align: right;
+	font-size: 1.2em;
+}
+
+.shocker_left {
+	float: left;
+	font-weight: bold;
+}
+
+.shocker_right {
+}
+
+.attachment {
+	margin: 1em 0;
+	{+START,IF,{$NOT,{$MOBILE}}}
+		border: 1px solid {$GET,standard_border};
+		padding: 0.5em;
+	{+END}
+	font-size: 0.9em;
+	white-space: nowrap;
+	display: inline-block;
+}
+figure {
+	margin: 1em 0;
+}
+.left>figure {
+	margin: 0;
+}
+/* Wordpress compatibility */
+.attachment.wp-caption {
+	white-space: normal;
+}
+.alignleft {
+	float: left;
+	margin-right: 0.5em;
+}
+.alignright {
+	float: right;
+	margin-left: 0.5em;
+}
+.aligncenter {
+	display: block;
+	margin: 1em auto;
+}
+.alignnone {
+	display: block;
+	margin: 1em;
+}
+/* Make inline images look a little nicer, including with Wordpress imports (but native too) */
+.alignleft, .alignright, .aligncenter, .alignnone, .alignnone, a[rel="lightbox"] img.attachment_img {
+	border: 2px solid {$GET,pale_border};
+}
+
+.attachment figcaption {
+	border: 1px solid {$GET,standard_border};
+	padding: 0.15em 0.3em;
+	font-style: italic;
+	margin-bottom: 0.5em;
+	display: inline-block;
+}
+
+.attachment_details {
+	margin-top: 0.2em;
+}
+
+.attachment_details .actions_list_strong {
+	background-position: left 4px;
+}
+
+.attachment_left {
+	float: left;
+	margin: 0 1.5em 0.5em 0;
+}
+
+.attachment_right {
+	float: right;
+	margin: 0 0 0.5em 1.5em;
+}
+
+.attachment_left .attachment, .attachment_right .attachment {
+	width: 200px;
+	white-space: normal;
+}
+
+.attachment_img {
+	max-width: 100%;
+}
+
+/*
+=========================
+====Link type display====
+===Based on "Elements"===
+==== by Ben Henschel ====
+=========================
+*/
+
+{+START,IF,{$CONFIG_OPTION,filetype_icons}}
+	a[href^="mailto:"] {
+		background: url('{$IMG;,filetypes/email_link}') no-repeat right top;
+		padding: 0 22px 5px 0;
+	}
+
+	a[href$=".pdf"], a[href$=".ps"], body div a.pdf_link {
+		background: url('{$IMG;,filetypes/page_pdf}') no-repeat right top;
+		padding: 0 22px 5px 0;
+	}
+
+	a[href$=".doc"], a[href$=".docx"], a[href$=".rtf"], body div a.doc_link {
+		background: url('{$IMG;,filetypes/page_doc}') no-repeat right top;
+		padding: 0 22px 5px 0;
+	}
+
+	a[href$=".xls"], a[href$=".xlsx"], body div a.xls_link {
+		background: url('{$IMG;,filetypes/page_xls}') no-repeat right top;
+		padding: 0 22px 5px 0;
+	}
+
+	a[href$=".ppt"], a[href$=".pptx"], body div a.ppt_link {
+		background: url('{$IMG;,filetypes/page_ppt}') no-repeat right top;
+		padding: 0 22px 5px 0;
+	}
+
+	a[href$=".log"], a[href$=".txt"], body div a.txt_link {
+		background: url('{$IMG;,filetypes/page_txt}') no-repeat right top;
+		padding: 0 22px 5px 0;
+	}
+
+	a[href$=".odt"], body div a.odt_link {
+		background: url('{$IMG;,filetypes/page_odt}') no-repeat right top;
+		padding: 0 22px 5px 0;
+	}
+
+	a[href$=".odp"], body div a.odp_link {
+		background: url('{$IMG;,filetypes/page_odt}') no-repeat right top;
+		padding: 0 22px 5px 0;
+	}
+
+	a[href$=".ods"], body div a.ods_link {
+		background: url('{$IMG;,filetypes/page_ods}') no-repeat right top;
+		padding: 0 22px 5px 0;
+	}
+
+	a[href$=".rss"], body div a.feed_link {
+		background: url('{$IMG;,filetypes/feed}') no-repeat right top; 
+		padding: 0 22px 5px 0;
+	}
+
+	a[href$=".torrent"], body div a.torrent_link {
+		background: url('{$IMG;,filetypes/page_torrent}') no-repeat right top;
+		padding: 0 22px 5px 0;
+	}
+
+	a[href$=".zip"], a[href$=".gz"], a[href$=".bz2"], a[href$=".tar"], a[href$=".rar"], body div a.archive_link {
+		background: url('{$IMG;,filetypes/page_archive}') no-repeat right top;
+		padding: 0 22px 5px 0;
+	}
+
+	a[href$=".asf"], a[href$=".ra"], a[href$=".wma"], a[href$=".wav"], a[href$=".mp3"], a[href$=".ogg"], a[href$=".mid"], a[href$=".mov"], a[href$=".qt"], a[href$=".wmv"], a[href$=".ram"], a[href$=".rm"], a[href$=".avi"], a[href$=".mpg"], a[href$=".mpe"], a[href$=".mpeg"], a[href$=".mp4"], a[href$=".webm"], body div a.media_link {
+		background: url('{$IMG;,filetypes/page_media}') no-repeat right top;
+		padding: 0 22px 5px 0;
+	}
+
+	a[target="_blank"] { /* Detected external links have styling */
+		background: url('{$IMG;,filetypes/external_link}') no-repeat right top;
+		padding-right: 10px;
+	}
+	body div a.external_link { /* Explicitly marked external links must show the styling with precedence */
+		background: url('{$IMG;,filetypes/external_link}') no-repeat right top !important;
+		padding-right: 10px !important;
+	}
+
+	body a.link_exempt, body link_exempt_wrap a, body a[href*=".php"] { /* Turn off the "new window" icon for URLs containing ".php" because usually in ocPortal these are used for system pages that don't warrant these icons */
+		background-image: none;
+		padding: 0px;
+	}
+
+	body a.link_exempt2 {
+		background-image: none;
+	}
+{+END}
+
+{+START,IF,{$ADDON_INSTALLED,recommend}}
+	.print_icon {
+		background: url('{$IMG;,recommend/print}') no-repeat left top !important;
+		padding: 0 0 5px 22px !important;
+	}
+{+END}
+
+a[title="{!VIRTUAL_ROOT}"]:hover {
+	color: {$GET,red_highlight_text};
+}
+
+/*
+=========================
+========Admin Zone=======
+=========================
+*/
+
+.adminzone_search {
+	{+START,IF,{$NOT,{$MOBILE}}}
+		position: absolute;
+	{+END}
+	{+START,IF,{$MOBILE}}
+		padding: 10px 0;
+		float: left;
+	{+END}
+	top: 20px;
+	right: 80px;
+}
+
+.adminzone_search label strong {
+	text-shadow: 1px 1px 1px {$GET,standard_border};
+	font-weight: normal;
+}
+
+.adminzone_search input {
+	vertical-align: middle;
+}
+
+.adminzone_search #search_button {
+	{$BETA_CSS_PROPERTY,opacity: 0.6;} display: inline-block;/*Needed for IE8*/
+}
+.adminzone_search #search_button:hover, body.touch_enabled .adminzone_search #search_button {
+	{$BETA_CSS_PROPERTY,opacity: 1.0;} display: inline-block;/*Needed for IE8*/
+}
+
+/*
+=========================
+=======Print rules=======
+=========================
+*/
+
+@media print {
+	body {
+		background: none;
+	}
+
+	#main_website_inner {
+		width: auto !important;
+		margin: 0 !important;
+		background: none !important;
+		box-shadow: none !important;
+		border:0 !important;
+	}
+
+	h1 {
+		display: none;
+	}
+
+	.wide_table_wrap {
+		overflow-y: visible !important;
+	}
+
+	.global_middle {
+		margin: 0 !important;
+		padding: 0 !important;
+		background: none !important;
+	}
+
+	.buttons_group,
+	.associated_links_block_group,
+	.screen_actions_outer,
+	.adminzone_search,
+	.global_banner,
+	header,
+	footer,
+	.global_side_panel,
+	.toggleable_tray_button,
+	.post_buttons,
+	.quick_self_edit_link, .staff_actions,
+	.comments_form,
+	.community_message,
+	.ratings, .trackbacks {
+		display: none;
+	}
+
+	.global_navigation {
+		visibility: hidden;
+	}
+}

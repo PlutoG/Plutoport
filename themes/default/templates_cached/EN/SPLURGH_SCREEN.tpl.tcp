@@ -1,0 +1,4 @@
+<?php
+return unserialize("a:6:{i:0;a:1:{i:0;a:5:{i:0;s:22:\"tcpfunc_SPLURGH_SCREEN\";i:1;a:0:{}i:2;i:1;i:3;s:0:\"\";i:4;s:0:\"\";}}i:1;a:0:{}i:2;s:14:\"SPLURGH_SCREEN\";i:3;N;i:4;N;i:5;s:300:\"\$TPL_FUNCS['tcpfunc_SPLURGH_SCREEN']=\"eval(\\\$RESET_VAR_CODE); echo output_tempcode_parameter( isset (\\\$bound_TITLE)?\\\$bound_TITLE:NULL,\\\"TITLE\\\",\\\"SPLURGH_SCREEN\\\"),\\n	\\\"\\\\n\\\\n\\\",\\n	output_tempcode_parameter( isset (\\\$bound_CONTENT)?\\\$bound_CONTENT:NULL,\\\"CONTENT\\\",\\\"SPLURGH_SCREEN\\\"),\\n	\\\"\\\\n\\\";\";\n\";}");
+
+?>

@@ -1,0 +1,4 @@
+<?php
+return unserialize("a:6:{i:0;a:1:{i:0;a:5:{i:0;s:17:\"tcpfunc_HTML_EDIT\";i:1;a:0:{}i:2;i:1;i:3;s:0:\"\";i:4;s:0:\"\";}}i:1;a:0:{}i:2;s:9:\"HTML_EDIT\";i:3;N;i:4;N;i:5;s:171:\"\$TPL_FUNCS['tcpfunc_HTML_EDIT']=\" echo \\\"<script type=\\\\\\\"text/javascript\\\\\\\" src=\\\\\\\"\\\",\\n	\\\"http://localhost:47370/\\\",\\n	\\\"/data/ckeditor/ckeditor.js\\\\\\\"></script>\\\";\";\n\";}");
+
+?>

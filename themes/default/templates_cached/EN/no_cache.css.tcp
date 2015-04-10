@@ -1,0 +1,4 @@
+<?php
+return unserialize("a:6:{i:0;a:1:{i:0;a:5:{i:0;s:31:\"tcpfunc_552832c9a3a7b4.87104648\";i:1;a:0:{}i:2;i:1;i:3;s:0:\"\";i:4;s:0:\"\";}}i:1;a:0:{}i:2;s:0:\"\";i:3;N;i:4;N;i:5;s:161:\"\$TPL_FUNCS['tcpfunc_552832c9a3a7b4.87104648']=\" echo ecv(\\\$cl,array(),0,\\\"BROWSER\\\",array(\\\"opera|chrome\\\",\\\"tt, kbd, samp { font-size: 1em !important; }\\\"));\";\n\";}");
+
+?>

@@ -1,0 +1,4 @@
+<?php
+return unserialize("a:6:{i:0;a:1:{i:0;a:5:{i:0;s:24:\"tcpfunc_BLOCK_SIDE_STATS\";i:1;a:0:{}i:2;i:1;i:3;s:0:\"\";i:4;s:0:\"\";}}i:1;a:0:{}i:2;s:16:\"BLOCK_SIDE_STATS\";i:3;N;i:4;N;i:5;s:547:\"\$TPL_FUNCS['tcpfunc_BLOCK_SIDE_STATS']=\"eval(\\\$RESET_VAR_CODE); echo \\\"<section class=\\\\\\\"box box___block_side_stats\\\\\\\"><div class=\\\\\\\"box_inner\\\\\\\">\\\\n	<h3>\\\",\\n	\\\"Site statistics\\\",\\n	\\\"</h3>\\\\n\\\\n	\\\",\\n	output_tempcode_parameter( isset (\\\$bound_CONTENT)?\\\$bound_CONTENT:NULL,\\\"CONTENT\\\",\\\"BLOCK_SIDE_STATS\\\"),\\n	\\\"\\\\n	\\\",\\n	((output_tempcode_parameter( isset (\\\$bound_CONTENT)?\\\$bound_CONTENT:NULL,\\\"CONTENT\\\",\\\"BLOCK_SIDE_STATS\\\").\\\"\\\"=='')?(\\\"\\\\n		<p class=\\\\\\\"nothing_here\\\\\\\">\\\".\\\"None\\\".\\\"</p>\\\\n	\\\"):''),\\n	\\\"\\\\n</div></section>\\\\n\\\";\";\n\";}");
+
+?>
